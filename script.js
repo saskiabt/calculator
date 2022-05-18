@@ -1,15 +1,13 @@
 const add = function(...args) {
-    let sum = null
-    let i= 0
-      while (i<args.length) { 
+    let sum = 0
+    for (i=0; i<args.length; i++) { 
       sum += args[i]
-      i++
     }
     parseInt(sum); 
     return sum; 
   };
 
-console.log(add(10,5,10))
+// console.log(add(10,5,10))
 
 const subtract = function(...args) {
     let difference = args[0]
@@ -39,36 +37,75 @@ const divide = function(...args) {
     return quotient; 
 }
 
-
 const operate = function(operator,...params) { 
+    console.log(operator);
     let result = operator(...params); 
-    // if (operator === divide) { 
-    //     result = divide(...params); 
-    // } else if (operator === multiply) { 
-    //    result = multiply(...params); 
-    // } else if (operator === subtract) { 
-    //     result = subtract(...params); 
-    // } else if (operator === add) {
-    //     result = add(...params); 
-    // }
     return result; 
 }
-
-console.log(operate(divide,3,4)); 
-console.log(operate(multiply,10,3,3))
-console.log(operate(add,3,4,5))
-console.log(operate(divide,12,4,1))
 
 // Create the functions that populate the display when you click the number buttons 
 let numbersDisplay = document.querySelector('#numbers-display'); 
 let numberButtons = document.querySelectorAll('.numberButton'); 
-let displayValue 
+let displayValue; 
 
 [...numberButtons].forEach((button) => {
     button.addEventListener('click', () => {
-      console.log("spread forEach worked");
       numbersDisplay.textContent += button.textContent
-      displayValue = numbersDisplay.textContent
-        console.log(displayValue)
     });
 });
+
+
+
+// save which operation has been chosen
+const functionButtons = document.querySelectorAll('.functionButton'); 
+let operation; 
+
+function chooseOperator(operator) { 
+    operation = operator
+    console.log(operation); 
+    return operation;
+}
+// let functionButtons = document.querySelectorAll('.functionButton'); 
+
+const divideBtn = document.getElementById('divide-btn'); 
+const multiplyBtn = document.getElementById('multiply-btn');
+const subtractBtn = document.getElementById('subtract-btn');
+const addBtn = document.getElementById('add-btn');
+
+divideBtn.onclick = function(){chooseOperator(divide)}; 
+multiplyBtn.onclick = function(){chooseOperator(multiply)}; 
+subtractBtn.onclick = function(){chooseOperator(subtract)}; 
+addBtn.onclick = function(){chooseOperator(add)}; 
+
+// save the numbers to run operate on in an array:
+let inputs = []; 
+[...functionButtons].forEach((button) => { 
+    button.addEventListener('click', () => {
+        inputs.push(numbersDisplay.textContent)
+        numbersDisplay.textContent = null
+        console.log(inputs)
+        numbersDisplay.textContent = inputs[-1]
+    })
+})
+
+
+// Run the operate function on the first number, stored in displayValue, and the operator, stored in operation; //
+const equalBtn = document.getElementById('equal-btn'); 
+
+equalBtn.addEventListener('click', () => { 
+    console.log(inputs); 
+    let total = operate(operation, ...inputs); 
+    console.log(total);
+    inputs = total; 
+    numbersDisplay.textContent = total
+    return total; 
+    // console.log(result); 
+})
+
+
+
+
+
+
+
+
