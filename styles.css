@@ -30,6 +30,14 @@
     height:100px; 
 }
 
+#numbers-display { 
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 40px;
+    padding-left: 185px;
+}
+
 #buttons-box { 
     display: flex;
     flex-direction: column;
