@@ -59,3 +59,16 @@ console.log(operate(multiply,10,3,3))
 console.log(operate(add,3,4,5))
 console.log(operate(divide,12,4,1))
 
+// Create the functions that populate the display when you click the number buttons 
+let numbersDisplay = document.querySelector('#numbers-display'); 
+let numberButtons = document.querySelectorAll('.numberButton'); 
+let displayValue 
+
+[...numberButtons].forEach((button) => {
+    button.addEventListener('click', () => {
+      console.log("spread forEach worked");
+      numbersDisplay.textContent += button.textContent
+      displayValue = numbersDisplay.textContent
+        console.log(displayValue)
+    });
+});
