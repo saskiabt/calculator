@@ -38,7 +38,6 @@ const divide = function(...args) {
 }
 
 const operate = function(operator,...params) { 
-    console.log(operator);
     let result = operator(...params); 
     return result; 
 }
@@ -55,17 +54,12 @@ let displayValue;
 });
 
 
-
 // save which operation has been chosen
-const functionButtons = document.querySelectorAll('.functionButton'); 
 let operation; 
-
 function chooseOperator(operator) { 
     operation = operator
-    console.log(operation); 
     return operation;
 }
-// let functionButtons = document.querySelectorAll('.functionButton'); 
 
 const divideBtn = document.getElementById('divide-btn'); 
 const multiplyBtn = document.getElementById('multiply-btn');
@@ -78,34 +72,47 @@ subtractBtn.onclick = function(){chooseOperator(subtract)};
 addBtn.onclick = function(){chooseOperator(add)}; 
 
 // save the numbers to run operate on in an array:
+const functionButtons = document.querySelectorAll('.functionButton'); 
 let inputs = []; 
-[...functionButtons].forEach((button) => { 
-    button.addEventListener('click', () => {
-        inputs.push(numbersDisplay.textContent)
-        numbersDisplay.textContent = null
-        console.log(inputs)
-        numbersDisplay.textContent = inputs[-1]
+
+// runs operate function with the saved operator, saves the result in variable called total;
+function evaluate () { 
+    const equalBtn = document.getElementById('equal-btn');
+    equalBtn.addEventListener('click', () => { 
+                console.log(inputs); 
+                console.log(operation)
+        let total = operate(operation, ...inputs); 
+                console.log(total);
+        // inputs = [total]; 
+        console.log(inputs); 
+        numbersDisplay.textContent = total
+        return total; 
     })
-})
+}
 
 
-// Run the operate function on the first number, stored in displayValue, and the operator, stored in operation; //
-const equalBtn = document.getElementById('equal-btn'); 
+// run the operate function whenever one of the function buttons is pressed: 
+function evaluateSingleExpression() {
+    [...functionButtons].forEach((button) => { 
+        button.addEventListener('click', function(event) {
+            let target = event.target
+            if (target.id === 'equal-btn' && inputs.length === 0) {
+            inputs.push(numbersDisplay.textContent)
+                    console.log(inputs); 
+            } else {
+                inputs.push(numbersDisplay.textContent); // adds the display value to the end of inputs array 
+                numbersDisplay.textContent = inputs[-1] // displays the most recent value entered 
+                evaluate(); 
+            }
+        }, false);
+    }); 
+    return; 
+}
 
-equalBtn.addEventListener('click', () => { 
-    console.log(inputs); 
-    let total = operate(operation, ...inputs); 
-    console.log(total);
-    inputs = total; 
-    numbersDisplay.textContent = total
-    return total; 
-    // console.log(result); 
-})
+evaluateSingleExpression(); 
 
 
 
 
-
-
-
+// function solve(total, )
 
