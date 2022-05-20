@@ -1,119 +1,112 @@
-const add = function(...args) {
-    let sum = 0
-    for (i=0; i<args.length; i++) { 
-      sum += args[i]
-    }
-    parseInt(sum); 
-    return sum; 
+// Global Variables 
+let firstNumber;
+let secondNumber;
+let operation;
+let newResult = true; 
+
+// Math Functions 
+const add = function(num1,num2) {
+    num1 = parseFloat(num1); 
+    num2 = parseFloat(num2); 
+    return num1 + num2; 
   };
 
-// console.log(add(10,5,10))
 
-const subtract = function(...args) {
-    let difference = args[0]
-    for (let i=1; i<args.length; i++) { 
-        difference -= args[i]; 
-    }
-    return difference
+const subtract = function(num1,num2) {
+    num1 = parseFloat(num1); 
+    num2 = parseFloat(num2); 
+    return num1 + num2; 
 }
 
-const multiply = function(...args) { 
-    let product = 1
-    for (let i=0; i<args.length; i++) { 
-        product *= args[i]; 
-    }
-    return product;
+const multiply = function(num1,num2) { 
+    num1 = parseFloat(num1)
+    num2 = parseFloat(num2)
+    return num1 * num2; 
 }
 
-const divide = function(...args) { 
-    let quotient = args[0]
-    for (let i=1; i<args.length; i++) { 
-        if (args[i] === 0) {
-            return 'ERROR'
-        } else {
-            quotient /= args[i]
-        }
-    }
-    return quotient; 
+const divide = function(num1,num2) { 
+    num1 = parseFloat(num1); 
+    num2 = parseFloat(num2); 
+
+    if (num2 === 0) { 
+     return 'ERROR'; 
+    } 
+    
+    return num1 / num2; 
 }
 
-const operate = function(operator,...params) { 
+const evaluate = function(operator,...params) { 
     let result = operator(...params); 
     return result; 
 }
 
-// Create the functions that populate the display when you click the number buttons 
-let numbersDisplay = document.querySelector('#numbers-display'); 
+// Clear display function and clear button
+function clearDisplay() {
+    const displayValue = document.getElementById('numbers-display'); 
+    displayValue.textContent = ""
+    newResult = true; 
+
+}
+
+let clearButton = document.getElementById('clear-btn'); 
+clearButton.addEventListener('click', () => { 
+    firstNumber = ''
+    secondNumber = ''
+    operation = ''
+    clearDisplay(); 
+})
+
+
+//populate the display with NUM if display is cleared, or else clear display and populate display with num
+function populateDisplay(num){ 
+
+    const displayValue = document.getElementById('numbers-display'); 
+    if (!newResult) { 
+        displayNumbers(); 
+    } else {
+        newResult = false
+        clearDisplay(); 
+        displayNumbers(); 
+    }
+
+    function displayNumbers() { 
+        newResult = false
+        if(displayValue.textContent == "0" && num === ".") { 
+            displayValue.textContent += num;
+        } else if (displayValue.textContent == "") { 
+            displayValue.textContent = num; 
+        } else { 
+            displayValue.textContent += num;
+        }
+    }
+}
+
+// On click of each number buttons, populate the display with numberButton textContent
+
 let numberButtons = document.querySelectorAll('.numberButton'); 
-let displayValue; 
-
-[...numberButtons].forEach((button) => {
-    button.addEventListener('click', () => {
-      numbersDisplay.textContent += button.textContent
-    });
-});
-
-
-// save which operation has been chosen
-let operation; 
-function chooseOperator(operator) { 
-    operation = operator
-    return operation;
-}
-
-const divideBtn = document.getElementById('divide-btn'); 
-const multiplyBtn = document.getElementById('multiply-btn');
-const subtractBtn = document.getElementById('subtract-btn');
-const addBtn = document.getElementById('add-btn');
-
-divideBtn.onclick = function(){chooseOperator(divide)}; 
-multiplyBtn.onclick = function(){chooseOperator(multiply)}; 
-subtractBtn.onclick = function(){chooseOperator(subtract)}; 
-addBtn.onclick = function(){chooseOperator(add)}; 
-
-// save the numbers to run operate on in an array:
-const functionButtons = document.querySelectorAll('.functionButton'); 
-let inputs = []; 
-
-// runs operate function with the saved operator, saves the result in variable called total;
-function evaluate () { 
-    const equalBtn = document.getElementById('equal-btn');
-    equalBtn.addEventListener('click', () => { 
-                console.log(inputs); 
-                console.log(operation)
-        let total = operate(operation, ...inputs); 
-                console.log(total);
-        // inputs = [total]; 
-        console.log(inputs); 
-        numbersDisplay.textContent = total
-        return total; 
-    })
-}
-
-
-// run the operate function whenever one of the function buttons is pressed: 
-function evaluateSingleExpression() {
-    [...functionButtons].forEach((button) => { 
-        button.addEventListener('click', function(event) {
-            let target = event.target
-            if (target.id === 'equal-btn' && inputs.length === 0) {
-            inputs.push(numbersDisplay.textContent)
-                    console.log(inputs); 
+[...numberButtons].forEach((button) => { 
+    button.addEventListener('click', function(event) {
+        const displayValue = document.getElementById('numbers-display'); 
+        if(event.target.id === 'zero-btn') { 
+            if(displayValue.textContent == "0") { 
+                return; 
             } else {
-                inputs.push(numbersDisplay.textContent); // adds the display value to the end of inputs array 
-                numbersDisplay.textContent = inputs[-1] // displays the most recent value entered 
-                evaluate(); 
+                populateDisplay(0); 
             }
-        }, false);
-    }); 
-    return; 
-}
+        } else if (displayValue.textContent === '0') {
+            newResult = true;
+            populateDisplay(event.target.textContent); 
+        } else { 
+            populateDisplay(event.target.textContent); 
+        }
+    })
+})
 
-evaluateSingleExpression(); 
+// Math buttons 
+const multiplyBtn = document.getElementById("multiply-btn"); 
+// const addBtn
+// const subtractBtn
+// const divideBtn
 
 
 
-
-function solve(operator, total, ...newArgs) { 
-    
-}
