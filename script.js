@@ -114,5 +114,6 @@ evaluateSingleExpression();
 
 
 
-// function solve(total, )
-
+function solve(operator, total, ...newArgs) { 
+    
+}
