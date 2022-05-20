@@ -38,9 +38,10 @@ const divide = function(...args) {
 }
 
 const evaluate = function(operator, ...numbers) { 
-    let result = operator(...numbers)
+    let result = operator[0](...numbers)
     return result;
 }
+
 
 //populate the display with the first number 
 let displayValue = document.getElementById('numbers-display'); 
@@ -53,12 +54,11 @@ let numberbuttons = document.querySelectorAll('.numberButton');
     })
 })
 }
-
 printNumbers(); 
 
 // enter the first operator and store it in variable OPERATION
 let functionButtons = document.querySelectorAll('.functionButton'); 
-let operation; 
+let operation = []; 
 let params =[];
 
 [...functionButtons].forEach((button) => { 
@@ -67,36 +67,41 @@ let params =[];
 
         let target = event.target; 
         if (target.id === "divide-btn") { 
-            operation = divide
+            operation.push(divide)
         } else if (target.id === 'multiply-btn') { 
-            operation = multiply
+            operation.push(multiply)
         } else if (target.id === 'subtract-btn') { 
-            operation = subtract
+            operation.push(subtract)
         } else if (target.id === 'add-btn') { 
-            operation = add 
+            operation.push(add) 
         }
         
         console.log(operation); 
-        // params.push(operation)
-     
-        // clear the display value 
+
         displayValue.textContent = null; 
         console.log(params)
-        return params;
+
 
     }, false);
 }); 
 
 
-
+// when equal button is pressed for the first time, evaluate the 2 numbers in params and the first operator in operators
 let equalButton = document.getElementById('equal-btn');
-equalButton.addEventListener('click', () => {
-    params.push(displayValue.textContent); // save the first number to the first slot in array PARAMS on function button click
-    console.log(params)
+    equalButton.addEventListener('click', () => {
+        params.push(displayValue.textContent); // save the first number to the first slot in array PARAMS on function button click
+        console.log(params)
 
-    let result = evaluate(operation, ...params); // evaluate the first pair of numbers with first operator and save value in variable called RESULT
-    displayValue.textContent = result; // display the result of the equation in the display box
+        let result = evaluate(operation, ...params); // evaluate the first pair of numbers with first operator and save value in variable called RESULT
+        displayValue.textContent = result; // display the result of the equation in the display box
         console.log(result); 
-    params = [result]; // set the result as the first variable in the next equation
-    console.log(params)
+        params = [result]; // set the result as the first variable in the next equation
+        console.log(params)
+    })
+
+let clearButton = document.getElementById('clear-btn'); 
+clearButton.addEventListener('click', () => { 
+    params = []; 
+    displayValue.textContent = ''; 
+    operation = [];
 })
