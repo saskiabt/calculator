@@ -17,11 +17,29 @@
     border: 1px solid black;
     width: 300px;
     height: 500px;
-    margin-top: 10%;
+    margin-top: 800px;
     padding: 15px;
-
+    position: absolute;
+    border: 1px solid black;
+    overflow: hidden;
 }
 
+#calculator-body:hover { 
+    cursor: move;
+}
+
+/* Prevents inconsistent highlighting of element while being dragged
+   Copied from https://stackoverflow.com/questions/826782 */
+   .noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+  }
+  
 
 #print-box { 
     display: flex;
@@ -71,3 +89,8 @@
 .numberButton { 
     padding: 20px;
 }
+
+.math-buttons { 
+    font-size: 20px
+}
+

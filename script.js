@@ -28,10 +28,10 @@ const divide = function(num1,num2) {
     num1 = parseFloat(num1); 
     num2 = parseFloat(num2); 
 
-    if (num2 === 0) { 
+    if (num1 === 0) { 
      return 'ERROR'; 
     } 
-    return num1 / num2; 
+    return num2 / num1; 
 }
 
 
@@ -112,9 +112,9 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 clearDisplay(); 
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract) {  // runs evaluate if first set of params has already been chosen
-                    operation = add;
                     evaluate(); 
-                    console.log(newResult)
+                    operation = add
+                    console.log(operation); 
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
                     operation = add; 
@@ -132,8 +132,9 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 clearDisplay(); 
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract) {  // runs evaluate if first set of params has already been chosen
-                    operation = subtract
                     evaluate(); 
+                    operation = subtract; 
+                    console.log(operation); 
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
                     operation = subtract; 
@@ -147,11 +148,11 @@ const mathButtons = document.querySelectorAll('.math-buttons');
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
-                operation = multiply; 
                 clearDisplay(); 
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract) {  // runs evaluate if first set of params has already been chosen
                     evaluate(); 
+                    operation = multiply
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
                     operation = multiply; 
@@ -165,11 +166,11 @@ const mathButtons = document.querySelectorAll('.math-buttons');
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
-                operation = divide; 
                 clearDisplay(); 
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract) {  // runs evaluate if first set of params has already been chosen
                     evaluate(); 
+                    operation = divide;
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
                     operation = divide; 
@@ -206,17 +207,19 @@ function evaluate() {
         firstNumber = ''; 
         newResult = true;
     } else { 
+        console.log(firstNumber); // firstnumber is 10
+        console.log(secondNumber); // secondnumber is blank 
         secondNumber = firstNumber; 
-        console.log(secondNumber); 
-        firstNumber = displayValue.textContent; // sets firstNumber equal to the result
+        console.log(secondNumber); // secondnumber is 10
+        firstNumber = displayValue.textContent; // sets firstNumber equal to the result // //FIRSTNUMBER = 20
         console.log(firstNumber); 
 
-        let result = operate(operation, firstNumber,secondNumber); 
+        let result = operate(operation, secondNumber,firstNumber); 
         clearDisplay(); 
         populateDisplay(result); 
 
-        secondNumber= result;
-        firstNumber = ''
+        firstNumber= result;
+        secondNumber = null;
         newResult = true; 
     }
 }
@@ -237,3 +240,27 @@ equalsButton.addEventListener('click', () => {
 
 
 
+// Make the calculator draggable: // 
+window.onload = function() {
+    draggable(document.querySelector("#calculator-body"));
+  }
+  
+  function draggable(el) {
+    el.addEventListener('mousedown', function(e) {
+      var offsetX = e.clientX - parseInt(window.getComputedStyle(this).left);
+      var offsetY = e.clientY - parseInt(window.getComputedStyle(this).top);
+      
+      function mouseMoveHandler(e) {
+        el.style.top = (e.clientY - offsetY) + 'px';
+        el.style.left = (e.clientX - offsetX) + 'px';
+      }
+  
+      function reset() {
+        window.removeEventListener('mousemove', mouseMoveHandler);
+        window.removeEventListener('mouseup', reset);
+      }
+  
+      window.addEventListener('mousemove', mouseMoveHandler);
+      window.addEventListener('mouseup', reset);
+    });
+  }
