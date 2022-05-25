@@ -3,6 +3,8 @@ let firstNumber = '';
 let secondNumber = '';
 let operation = '';
 let newResult = true; 
+let decimalCount = 0; 
+
 
 // Math Functions 
 const add = function(num1,num2) {
@@ -28,7 +30,9 @@ const divide = function(num1,num2) {
     num1 = parseFloat(num1); 
     num2 = parseFloat(num2); 
 
-    if (num1 === 0) { 
+    if (num2 == 0) { 
+     const displayValue = document.getElementById('numbers-display'); 
+     displayValue.textContent = 'ERROR'
      return 'ERROR'; 
     } 
     return num1 / num2; 
@@ -82,19 +86,30 @@ let numberButtons = document.querySelectorAll('.numberButton');
 [...numberButtons].forEach((button) => { 
     button.addEventListener('click', function(event) {
         const displayValue = document.getElementById('numbers-display'); 
-        if(event.target.id === 'zero-btn') { 
-            if(displayValue.textContent == "0") { 
-                return; 
+        let target = event.target
+        if (target.id === 'decimal-btn') {
+            decimalCount++; 
+            console.log(decimalCount)
+            if (target.id === "decimal-btn" && decimalCount >1) { 
+                return;
             } else {
-                populateDisplay(0); 
+                populateDisplay(".")
+            };
+        } else {
+            if(target.id === 'zero-btn') { 
+                if(displayValue.textContent == "0") { 
+                    return; 
+                } else {
+                    populateDisplay(0); 
+                }
+            } else if (displayValue.textContent === '0') {
+                newResult = true;
+                populateDisplay(event.target.textContent); 
+            } else { 
+                populateDisplay(event.target.textContent); 
             }
-        } else if (displayValue.textContent === '0') {
-            newResult = true;
-            populateDisplay(event.target.textContent); 
-        } else { 
-            populateDisplay(event.target.textContent); 
-        }
-    })
+        } 
+    }); 
 })
 
 // Math buttons 
@@ -102,7 +117,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
 [...mathButtons].forEach((button) => {
     button.addEventListener('click', function(event) {
         let target = event.target
-
+        decimalCount = 0; 
         if(target.id === "add-btn") { 
             const displayValue = document.getElementById('numbers-display'); 
             if (!firstNumber) { // if firstNumber is empty
@@ -214,9 +229,6 @@ function evaluate() {
         firstNumber = displayValue.textContent; // sets firstNumber equal to the result // //FIRSTNUMBER = 20
 
         let result = operate(operation, secondNumber,firstNumber); 
-        console.log(`result is ${result}`)
-        console.log(typeof result); 
-
         clearDisplay(); 
         populateDisplay(result); 
         firstNumber= result;
@@ -225,6 +237,7 @@ function evaluate() {
     }
 }
 
+// evaluate when equals button is pressed 
 const equalsButton = document.getElementById("equal-btn")
 equalsButton.addEventListener('click', () => { 
 
