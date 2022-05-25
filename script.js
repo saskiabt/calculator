@@ -1,12 +1,13 @@
-// Global Variables 
+// GLOBAL VARIABLES 
 let firstNumber = '';
 let secondNumber = '';
 let operation = '';
 let newResult = true; 
 let decimalCount = 0; 
+const equationDisplay = document.querySelector("#equation-display")
 
 
-// Math Functions 
+// MATH FUNCTIONS 
 const add = function(num1,num2) {
     num1 = parseFloat(num1); 
     num2 = parseFloat(num2); 
@@ -39,14 +40,16 @@ const divide = function(num1,num2) {
 }
 
 
-// Clear display function and clear button
+// CLEAR DISPLAY FUNCTION
 function clearDisplay() {
     const displayValue = document.getElementById('numbers-display'); 
     displayValue.textContent = ""
     newResult = true; 
+    equationDisplay.textContent = ''
 
 }
 
+// CLEAR BUTTON 
 let clearButton = document.getElementById('clear-btn'); 
 clearButton.addEventListener('click', () => { 
     firstNumber = ''
@@ -80,14 +83,14 @@ function populateDisplay(num){
     };
 };
 
-// On click of each number buttons, populate the display with numberButton textContent
+// NUMBER BUTTONS 
 
 let numberButtons = document.querySelectorAll('.numberButton'); 
 [...numberButtons].forEach((button) => { 
     button.addEventListener('click', function(event) {
         const displayValue = document.getElementById('numbers-display'); 
         let target = event.target
-        
+
         if (target.id === 'decimal-btn') {
             decimalCount++; 
             console.log(decimalCount)
@@ -113,7 +116,7 @@ let numberButtons = document.querySelectorAll('.numberButton');
     }); 
 })
 
-// Math buttons 
+// MATH BUTTONS 
 const mathButtons = document.querySelectorAll('.math-buttons'); 
 [...mathButtons].forEach((button) => {
     button.addEventListener('click', function(event) {
@@ -202,6 +205,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
     })
 })
 
+// OPERATE AND EVALUATE FUNCTIONS 
 const operate = function(...args) { 
     let operator = args[0]; 
     let nums = []; 
@@ -227,7 +231,7 @@ function evaluate() {
         newResult = true;
     } else { 
         secondNumber = firstNumber; 
-        firstNumber = displayValue.textContent; // sets firstNumber equal to the result // //FIRSTNUMBER = 20
+        firstNumber = displayValue.textContent; // sets firstNumber equal to the result // 
 
         let result = operate(operation, secondNumber,firstNumber); 
         clearDisplay(); 
@@ -238,23 +242,24 @@ function evaluate() {
     }
 }
 
-// evaluate when equals button is pressed 
+// EQUALS BUTTON --> EVALUATES FUNCTION 
 const equalsButton = document.getElementById("equal-btn")
 equalsButton.addEventListener('click', () => { 
 
     if (operation === multiply || operation === divide || operation === add || operation === subtract) evaluate(); 
     operation = null; 
 }); 
-// const addBtn
-// const subtractBtn
-// const divideBtn
 
 
 
 // Make the calculator draggable: // 
-window.onload = function() {
-    draggable(document.querySelector("#calculator-body"));
-  }
+// window.onload = function() {
+//     draggable(document.querySelector("#calculator-body"));
+//   }
+
+window.onload = function() { 
+    draggable(document.querySelector("#calculator-body-container")); 
+}
   
   function draggable(el) {
     el.addEventListener('mousedown', function(e) {

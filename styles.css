@@ -1,27 +1,56 @@
+body { 
+    /* background-color: rgb(247, 179, 179); */
+    /* background-color: rgb(154 161 229 / 88%) */
+    /* background-color: rgb(13 16 48 / 88%); */
+    background-color: rgb(167 255 172 / 71%);
+}
+
 #content { 
     display: flex;
     justify-content: center;
     align-items: center;
     margin:auto; 
 }
+ /* styles for grainy background */
 
 #calculator-body-container { 
     display: flex;
     align-items: center;
     justify-content: center;
+    color:  black;
+    position: absolute;
+}
+
+#calculator-body-container :hover { 
+    cursor:move; 
+}
+
+#frame {
+    user-select: none;
+    color: black;
+    width: 32em;
+    height: 39em;
+    margin-top: 801px;
+    /* rotate: 180deg; */
 }
 
 #calculator-body { 
-    display: flex; 
+    user-select: none;
+    color: black;
+    display: flex;
     flex-direction: column;
-    border: 1px solid black;
     width: 300px;
     height: 500px;
-    margin-top: 800px;
-    padding: 15px;
+    margin-top: 802px;
+    padding: 75px;
     position: absolute;
-    border: 1px solid black;
     overflow: hidden;
+
+}
+
+#calculator-box { 
+    user-select: none;
+    color: black;
 }
 
 #calculator-body:hover { 
@@ -42,55 +71,90 @@
   
 
 #print-box { 
+    user-select: none;
+    color: rgb(0, 15, 99);
     display: flex;
-    border: 1px solid black;
+    border: 1px dotted rgb(224, 195, 195);
     padding: 8px;
-    height:100px; 
+    height: 78px;
+    margin: 23px 14px 15px 12px;
+    border-radius: 15%;
 }
 
 #numbers-display { 
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    font-size: 20px;
+    font-size: 22px;
     padding-left: 0px;
+    direction: rtl;
+    font-family: 'mencken-std-head-compress',sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    /* font-size: 40px; */
 }
 
 #buttons-box { 
     display: flex;
     flex-direction: column;
     height: 400px;
-}
-
-#buttons-box-top { 
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 27px 0px;
     gap:2px;
 }
 
+#buttons-box-top { 
+    user-select: none;
+    color: black;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 10px 18px;
+    gap: 2px;
+    padding-bottom:20px;
+} 
+
 #buttons-box-bottom { 
+    user-select: none;
+    color: black;
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 10px;
+    padding: 0px 18px;
+    padding-right:23px
 }
 
 #bbb-left { 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr) 2fr;
+    gap:2px;
 } 
 
 #bbb-right { 
     display: grid;
     grid-template-rows: repeat(5,1fr);
+    gap:2px
 }
 
 .numberButton { 
-    padding: 20px;
+    /* padding: 20px; */
 }
 
 .math-buttons { 
-    font-size: 20px
+    font-size: 16px;
 }
 
+#equationDisplay { 
+
+}
+
+button { 
+    background-color: rgb(255 247 210 / 71%); 
+    border: 1px #b0cdcc solid; 
+    /* font-family: 'mencken-std-head-compress',sans-serif; */
+    border-radius: 10%;
+    /* gap: 2px; */
+    font-size: 20px;
+    padding:13px 4px;
+    font-family: ibm-plex-mono,sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
