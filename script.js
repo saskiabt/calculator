@@ -87,6 +87,7 @@ let numberButtons = document.querySelectorAll('.numberButton');
     button.addEventListener('click', function(event) {
         const displayValue = document.getElementById('numbers-display'); 
         let target = event.target
+        
         if (target.id === 'decimal-btn') {
             decimalCount++; 
             console.log(decimalCount)
