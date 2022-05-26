@@ -4,7 +4,7 @@ let secondNumber = '';
 let operation = '';
 let newResult = true; 
 let decimalCount = 0; 
-const equationDisplay = document.querySelector("#equation-display")
+let equationDisplay = document.querySelector("#equation-display")
 
 
 // MATH FUNCTIONS 
@@ -82,10 +82,15 @@ function populateDisplay(num){
         newResult = false
         if(displayValue.textContent == "0" && num === ".") { 
             displayValue.textContent += num;
+            equationDisplay += num;
         } else if (displayValue.textContent == "") { 
             displayValue.textContent = num; 
+            equationDisplay = num;
+
         } else { 
             displayValue.textContent += num;
+            equationDisplay += num;
+
         };
     };
 };

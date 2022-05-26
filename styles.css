@@ -1,8 +1,6 @@
 body { 
-    /* background-color: rgb(247, 179, 179); */
-    /* background-color: rgb(154 161 229 / 88%) */
-    /* background-color: rgb(13 16 48 / 88%); */
     background-color: rgb(167 255 172 / 71%);
+    
 }
 
 #content { 
@@ -12,7 +10,6 @@ body {
     margin:auto; 
     flex-direction: column;
 }
- /* styles for grainy background */
 
 #calculator-body-container { 
     display: flex;
@@ -79,7 +76,7 @@ body {
     margin: 23px 14px 15px 12px;
     border-radius: 15%;
     background-color: rgb(255 247 210 / 71%);
-    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    box-shadow: rgb(17 17 26 / 5%) 0px 1px 0px, inset rgb(148 213 210 / 64%) 0px 0px 0px 1px;
     cursor: default;
     direction: rtl;
     justify-content: flex-start;
@@ -101,7 +98,8 @@ body {
     font-weight: 200;
     font-style: normal;
     align-items: flex-end;
-    /* font-size: 40px; */
+    color: rgb(34 61 95 / 77%);
+    font-weight: 400;
 }
 
 #buttons-box { 
@@ -157,18 +155,22 @@ body {
 }
 
 button { 
-    background-color: rgb(255 247 210 / 71%); 
+    background-color: rgb(206 243 227);
+    /* background-color: rgb(213 255 238); */
     border: 1px #b0cdcc solid; 
     /* font-family: 'mencken-std-head-compress',sans-serif; */
-    border-radius: 10%;
+    border-radius: 30%;
     /* gap: 2px; */
     font-size: 20px;
     padding:13px 4px;
-    font-family: 'ibm-plex-mono',sans-serif;
-    font-weight: 100;
+    font-family: 'roboto-mono', sans-serif;
+    font-weight: 200;
     font-style: normal;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     cursor:pointer;
+    box-shadow: rgb(244 244 244 / 88%) 1px 0px 0px 1px, inset rgb(130 193 192 / 61%) 1px -2px 1px 0px;
+    /* box-shadow: rgb(244 244 244 / 88%) 1px 0px 0px 1px, inset rgb(114 179 177 / 65%) 1px -2px 2px 1px; */
+    /* box-shadow:  rgb(244 244 244 / 65%) 1px -4px 1px 0px, rgb(30 69 68 / 43%) -1px 0px 1px 0px; */
+    color: #424264;
 }
 
 button:hover { 
@@ -188,3 +190,7 @@ button:hover {
     padding: 0px 19px;
 }
 
+.topButton { 
+    font-family: dico-code-two,mono;
+    color: rgb(98 98 134)
+}
