@@ -32,9 +32,9 @@ const divide = function(num1,num2) {
     num2 = parseFloat(num2); 
 
     if (num2 == 0) { 
-     const displayValue = document.getElementById('numbers-display'); 
-     displayValue.textContent = 'ERROR'
-     return 'ERROR'; 
+    //  const displayValue = document.getElementById('numbers-display'); 
+    //  displayValue.textContent = 'Error'
+     return ' (: error '; 
     } 
     return num1 / num2; 
 }
@@ -79,19 +79,21 @@ function populateDisplay(num){
     }
 
     function displayNumbers() { 
-        newResult = false
-        if(displayValue.textContent == "0" && num === ".") { 
-            displayValue.textContent += num;
-            equationDisplay += num;
-        } else if (displayValue.textContent == "") { 
-            displayValue.textContent = num; 
-            equationDisplay = num;
+        if(displayValue.textContent.length < 19) {
+            newResult = false
+            if(displayValue.textContent == "0" && num === ".") { 
+                displayValue.textContent += num;
+                equationDisplay += num;
+            } else if (displayValue.textContent == "") { 
+                displayValue.textContent = num; 
+                equationDisplay = num;
 
-        } else { 
-            displayValue.textContent += num;
-            equationDisplay += num;
+            } else { 
+                displayValue.textContent += num;
+                equationDisplay += num;
 
-        };
+            };
+        }
     };
 };
 
@@ -280,13 +282,10 @@ equalsButton.addEventListener('click', () => {
     operation = null; 
 }); 
 
+// DELETE BUTTON: REMOVE LAST CHARACTER OF NUMBER DISPLAY: 
 
 
 // Make the calculator draggable: // 
-// window.onload = function() {
-//     draggable(document.querySelector("#calculator-body"));
-//   }
-
 window.onload = function() { 
     draggable(document.querySelector("#calculator-body-container")); 
 }

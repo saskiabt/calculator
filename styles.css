@@ -156,11 +156,8 @@ body {
 
 button { 
     background-color: rgb(206 243 227);
-    /* background-color: rgb(213 255 238); */
     border: 1px #b0cdcc solid; 
-    /* font-family: 'mencken-std-head-compress',sans-serif; */
     border-radius: 30%;
-    /* gap: 2px; */
     font-size: 20px;
     padding:13px 4px;
     font-family: 'roboto-mono', sans-serif;
@@ -168,15 +165,18 @@ button {
     font-style: normal;
     cursor:pointer;
     box-shadow: rgb(244 244 244 / 88%) 1px 0px 0px 1px, inset rgb(130 193 192 / 61%) 1px -2px 1px 0px;
-    /* box-shadow: rgb(244 244 244 / 88%) 1px 0px 0px 1px, inset rgb(114 179 177 / 65%) 1px -2px 2px 1px; */
-    /* box-shadow:  rgb(244 244 244 / 65%) 1px -4px 1px 0px, rgb(30 69 68 / 43%) -1px 0px 1px 0px; */
     color: #424264;
 }
 
 button:hover { 
-    border: 1px #10bd83 solid;
+    border: 1px #10bd83 ridge;
     cursor:default;
 }
+
+button:active { 
+    background-color: white;
+}
+
 
 #signature { 
     align-self: flex-end;
