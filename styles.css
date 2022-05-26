@@ -85,7 +85,7 @@ body {
     justify-content: flex-start;
     align-items: flex-end;
     font-family: dico-code-two,mono;
-    font-weight: 400;
+    font-weight: 700;
     font-style: normal;
 }
 
@@ -96,7 +96,8 @@ body {
     font-size:26px;
     padding-left: 0px;
     direction: rtl;
-    font-family: ibm-plex-mono,sans-serif;
+    font-family: dico-code-two,mono;
+    font-stretch: expanded;
     font-weight: 200;
     font-style: normal;
     align-items: flex-end;
@@ -183,4 +184,7 @@ button:hover {
     font-style: normal;
     font-size: 1em;
     color: rgb(12, 4, 34);
+    border: 3px solid black;
+    padding: 0px 19px;
 }
+
