@@ -46,6 +46,14 @@ const exponentiation = function(num1,num2) {
     return num1**num2;
 }
 
+const root = function(num1,num2) { 
+    num1=parseFloat(num1); 
+    num2 = parseFloat(num2); 
+
+    if (num1 === 0 || num2 === 0) return 0; 
+    if (num1 < 0 || num2 <0) return 0;
+    return num1**(1/num2); 
+}
 
 // CLEAR DISPLAY FUNCTION
 function clearDisplay() {
@@ -144,7 +152,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 operation = add; 
                 clearDisplay(); 
             } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract) {  // runs evaluate if first set of params has already been chosen
+                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
                     evaluate(); 
                     operation = add
                     console.log(operation); 
@@ -164,7 +172,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 operation = subtract; 
                 clearDisplay(); 
             } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract) {  // runs evaluate if first set of params has already been chosen
+                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
                     evaluate(); 
                     operation = subtract; 
                     console.log(operation); 
@@ -184,7 +192,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 operation = multiply; 
                 clearDisplay(); 
             } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract) {  // runs evaluate if first set of params has already been chosen
+                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
                     evaluate(); 
                     operation = multiply; 
                     console.log(operation); 
@@ -204,7 +212,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 operation = divide;
                 clearDisplay(); 
             } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract) {  // runs evaluate if first set of params has already been chosen
+                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
                     evaluate(); 
                     operation = divide;
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
@@ -223,9 +231,28 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 operation = exponentiation;
                 clearDisplay(); 
             } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract) {  // runs evaluate if first set of params has already been chosen
+                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
                     evaluate(); 
                     operation = exponentiation;
+                } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
+                    firstNumber = parseFloat(displayValue.textContent); 
+                    operation = exponentiation; 
+                    clearDisplay(); 
+                }
+            }
+        }
+
+        if(target.id === "root-btn") { 
+            const displayValue = document.getElementById('numbers-display'); 
+            if (!firstNumber) { // if firstNumber is empty
+                firstNumber = parseFloat(displayValue.textContent); 
+                console.log(`FirstNumber is ${firstNumber}`) 
+                operation = root;
+                clearDisplay(); 
+            } else { // if firstNumber has already been declared 
+                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+                    evaluate(); 
+                    operation = root;
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
                     operation = exponentiation; 
@@ -278,7 +305,7 @@ function evaluate() {
 const equalsButton = document.getElementById("equal-btn")
 equalsButton.addEventListener('click', () => { 
 
-    if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation) evaluate(); 
+    if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) evaluate(); 
     operation = null; 
 }); 
 
