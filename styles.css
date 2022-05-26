@@ -68,31 +68,33 @@ body {
 
 #print-box { 
     user-select: none;
-    color: rgb(3 9 71 / 88%);
+    color: rgba(3, 9, 71, 0.88);
     display: flex;
-    border:1.3px groove rgb(205 215 255);
+    flex-direction: column;
+    border: 1.3px groove rgb(205, 215, 255);
     padding: 8px;
     height: 78px;
     margin: 23px 14px 15px 12px;
     border-radius: 15%;
-    background-color: rgb(255 247 210 / 71%);
-    box-shadow: rgb(17 17 26 / 5%) 0px 1px 0px, inset rgb(148 213 210 / 64%) 0px 0px 0px 1px;
+    background-color: rgba(255, 247, 210, 0.71);
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(148, 213, 210, 0.64) 0px 0px 0px 1px inset;
     cursor: default;
     direction: rtl;
     justify-content: flex-start;
     align-items: flex-end;
-    font-family: dico-code-two,mono;
+    font-family: dico-code-two, mono;
     font-weight: 700;
     font-style: normal;
+    gap: 20px;
 }
 
 #numbers-display { 
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-self: flex-end;
+    align-self: flex-start;
     font-size:26px;
     padding-left: 0px;
-    direction: rtl;
+    direction: ltr;
     font-family: dico-code-two,mono;
     font-stretch: expanded;
     font-weight: 200;
@@ -142,15 +144,19 @@ body {
     gap:2px
 }
 
-.numberButton { 
-    /* padding: 20px; */
-}
 
 .math-buttons { 
     font-size: 16px;
 }
 
-#equationDisplay { 
+#equation-display { 
+    display: flex;
+    align-self: flex-start;
+    padding-top: 3px;
+    font-family: dico-code-two,mono;
+    font-stretch: expanded;
+    font-weight: 200;
+    direction: ltr;
 
 }
 
