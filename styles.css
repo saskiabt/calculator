@@ -194,9 +194,17 @@ button:active {
     border-bottom: 3px groove rgb(255, 203, 203);
     padding-left: 2px;
     padding-right: 2px;
+    padding-bottom: 2px;
 }
 
 .topButton { 
     font-family: dico-code-two,mono;
     color: rgb(98 98 134)
+}
+
+#name:hover {
+color: rgb(14, 8, 98);
+border-bottom:none;
+font-weight: 700px;
+font-weight: bold;
 }
