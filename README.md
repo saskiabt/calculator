@@ -10,7 +10,7 @@ Functionality / Specs:
 
 3) Equation display shows the operation and numbers of equation. 
 
-4) Decimal Place Button, which is disabled if there is already a decimal in the display.
+4) Decimal Place Button 
 
 5) Clear button to clear number display and equation display.
 

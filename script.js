@@ -369,10 +369,3 @@ window.onload = function() {
       window.addEventListener('mouseup', reset);
     });
   }
-
-  // KEYBOARD FUNCTION: 
-
-  // Link to Github 
-  document.getElementById('signature', 'name').addEventListener('click', () => {
-    window.open("https://github.com/saskiabt/calculator", 'myWindow');
-  }); 
