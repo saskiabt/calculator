@@ -185,15 +185,15 @@ button:active {
 
 
 #signature { 
-    align-self: flex-end;
-    justify-self: flex-end;
-    font-family: 'mencken-std-narrow',sans-serif;
+    place-self: flex-end;
+    font-family: mencken-std-narrow, sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 1em;
-    color: rgb(12, 4, 34);
-    border: 3px solid black;
-    padding: 0px 19px;
+    font-size: 0.9em;
+    color: rgb(13 13 113);
+    border-bottom: 3px groove rgb(255, 203, 203);
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
 .topButton { 

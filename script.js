@@ -241,6 +241,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                     firstNumber = parseFloat(displayValue.textContent); 
                     operation = divide; 
                     clearDisplay(); 
+                    equationDisplay.textContent += '/';
                 }
             }
         }
