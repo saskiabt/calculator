@@ -10,7 +10,19 @@ Functionality / Specs:
 
 3) Equation display shows the operation and numbers of equation. 
 
+4) Decimal Place Button 
+
+5) Clear button to clear number display and equation display.
+
 4) Original UI and design by me :)
 
 
-To be added: 
+To be added as of 5/26/22: 
+
+1) Keyboard Functionality 
+
+2) Max number of digits to not overflow the display when large numbers are added
+
+3) Delete button functionality 
+
+4) Plus/Minus Button Functionality 
