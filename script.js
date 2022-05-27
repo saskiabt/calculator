@@ -343,7 +343,14 @@ equalsButton.addEventListener('click', () => {
 }); 
 
 // DELETE BUTTON: REMOVE LAST CHARACTER OF NUMBER DISPLAY: 
+const deleteButton = document.querySelector("#delete-btn"); 
+deleteButton.addEventListener('click', () => { 
+    const displayValue = document.getElementById('numbers-display'); 
+    const equationDisplay = document.querySelector("#equation-display"); 
 
+    displayValue.textContent = displayValue.textContent.slice(0,-1); 
+    equationDisplay.textContent = equationDisplay.textContent.slice(0,-1); 
+});
 
 // Make the calculator draggable: // 
 window.onload = function() { 
