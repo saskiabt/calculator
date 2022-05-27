@@ -122,7 +122,6 @@ let numberButtons = document.querySelectorAll('.numberButton');
     button.addEventListener('click', function(event) {
         const displayValue = document.getElementById('numbers-display'); 
         let target = event.target
-
         if (target.id === 'decimal-btn') {
             decimalCount++; 
             console.log(decimalCount)
@@ -281,12 +280,18 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 console.log(`FirstNumber is ${firstNumber}`) 
                 operation = root;
                 clearDisplay(); 
-                equationDisplay.textContent += '√';
+                if(!equationDisplay.textContent.includes('√')) { 
+                    equationDisplay.textContent += '√';
+                }
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
                     evaluate(); 
                     operation = root;
-                    equationDisplay.textContent += '√';
+                    if(equationDisplay.textContent.includes('√') === false) { 
+                        equationDisplay.textContent += '√';
+                    } else {
+                        equationDisplay.textContent = 'Error, Double Operation'
+                    }
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
                     operation = exponentiation; 
@@ -322,6 +327,8 @@ function evaluate() {
         newResult = true; 
     } else if (typeof firstNumber !== 'number') { // if firstNumber has been reset to blank string, allows for looping through multiple calls of evaluate()
         firstNumber = parseFloat(displayValue.textContent); 
+        console.log(typeof firstNumber); 
+        firstNumber = Number(firstNumber); 
         let result = operate(operation, firstNumber,secondNumber); 
         console.log(result); 
 
