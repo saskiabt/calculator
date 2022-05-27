@@ -88,7 +88,7 @@ function populateDisplay(num){
         displayNumbers(); 
     } else {
         newResult = false
-        clearDisplay(); 
+        // clearDisplay(); 
         displayNumbers(); 
     }
 
@@ -98,7 +98,9 @@ function populateDisplay(num){
             if(displayValue.textContent == "0" && num === ".") { 
                 displayValue.textContent += num;
                 equationDisplay.textContent += num;
-
+            } else if (displayValue.textContent === "0" && num !=="."){
+                displayValue.textContent = num
+                equationDisplay.textContent = num
             } else if (displayValue.textContent == "") { 
                 displayValue.textContent = num; 
                 equationDisplay.textContent += num;
@@ -307,6 +309,11 @@ const operate = function(...args) {
     return operator(...nums)
 }; 
 
+// // round result to scientific notation if above 8 figs
+function expo(x,f) {
+    return Number.parseFloat(x).toExponential(f);
+}
+
 function evaluate() { 
     const displayValue = document.getElementById('numbers-display'); 
 
@@ -316,6 +323,12 @@ function evaluate() {
     } else if (typeof firstNumber !== 'number') { // if firstNumber has been reset to blank string, allows for looping through multiple calls of evaluate()
         firstNumber = parseFloat(displayValue.textContent); 
         let result = operate(operation, firstNumber,secondNumber); 
+        console.log(result); 
+
+        // round result to scientific notation w/ 3 figs if above 8 figs
+        if (result.toString().length > 8) { 
+            result = expo(result,3); 
+        }
         clearDisplay(); 
         clearEquation()
         populateDisplay(result); 
@@ -326,6 +339,11 @@ function evaluate() {
         firstNumber = displayValue.textContent; // sets firstNumber equal to the result // 
 
         let result = operate(operation, secondNumber,firstNumber); 
+        console.log(result.toString().length); 
+
+        if (result.toString().length > 8) { 
+            result = expo(result,3); 
+        }
         clearDisplay(); 
         clearEquation()
         populateDisplay(result); 
@@ -361,9 +379,15 @@ plusMinusButton.addEventListener('click', () => {
 
     if (displayValue.textContent.includes('-') === false) { 
         displayValue.textContent = `-${displayValue.textContent}`;
-        equationDisplay.textContent = `-${displayValue.textContent}`;  
     } else { 
         displayValue.textContent = displayValue.textContent.substring(1); 
+        // equationDisplay.textContent = equationDisplay.textContent.substring(1); 
+    }
+
+    if (equationDisplay.textContent[0].includes('-') === false) { 
+        equationDisplay.textContent = `-${equationDisplay.textContent}`
+    } else { 
+        equationDisplay.textContent = equationDisplay.textContent.substring(1); 
     }
 })
 
