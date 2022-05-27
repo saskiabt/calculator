@@ -384,7 +384,7 @@ plusMinusButton.addEventListener('click', () => {
         // equationDisplay.textContent = equationDisplay.textContent.substring(1); 
     }
 
-    if (equationDisplay.textContent[0].includes('-') === false) { 
+    if (equationDisplay.textContent.includes('-') === false) { 
         equationDisplay.textContent = `-${equationDisplay.textContent}`
     } else { 
         equationDisplay.textContent = equationDisplay.textContent.substring(1); 
