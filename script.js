@@ -112,6 +112,7 @@ function populateDisplay(num){
     };
 };
 
+//comment
 // NUMBER BUTTONS 
 
 let numberButtons = document.querySelectorAll('.numberButton'); 
