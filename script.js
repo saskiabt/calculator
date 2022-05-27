@@ -360,7 +360,8 @@ plusMinusButton.addEventListener('click', () => {
     const equationDisplay = document.querySelector("#equation-display"); 
 
     if (displayValue.textContent.includes('-') === false) { 
-        displayValue.textContent = `-${displayValue.textContent}`; 
+        displayValue.textContent = `-${displayValue.textContent}`;
+        equationDisplay.textContent = `-${displayValue.textContent}`;  
     } else { 
         displayValue.textContent = displayValue.textContent.substring(1); 
     }
