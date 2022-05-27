@@ -353,6 +353,21 @@ deleteButton.addEventListener('click', () => {
     equationDisplay.textContent = equationDisplay.textContent.slice(0,-1); 
 });
 
+// PLUS MINUS BUTTON 
+const plusMinusButton = document.querySelector("#plus-minus-btn"); 
+plusMinusButton.addEventListener('click', () => { 
+    const displayValue = document.getElementById('numbers-display'); 
+    const equationDisplay = document.querySelector("#equation-display"); 
+
+    if (displayValue.textContent.includes('-') === false) { 
+        displayValue.textContent = `-${displayValue.textContent}`; 
+    } else { 
+        displayValue.textContent = displayValue.textContent.substring(1); 
+    }
+})
+
+
+
 // Make the calculator draggable: // 
 window.onload = function() { 
     draggable(document.querySelector("#calculator-body-container")); 
