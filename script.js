@@ -131,18 +131,6 @@ let numberButtons = document.querySelectorAll('.numberButton');
 
         let target = event.target
 
-        if (displayValue.textContent.includes('NaN') || displayValue.textContent.includes('Infinity')) {
-            clearDisplay;
-            displayValue.textContent = 'ERR'
-        }
-        if (equationDisplay.textContent.includes('NaN') || equationDisplay.textContent.includes('Infinity')) {
-            clearEquation;
-            equationDisplay.textContent = 'ERR'
-        }
-
-        if (displayValue.textContent.length > 18) { 
-            displayValue.textContent = expo(displayValue.textContent, 3); 
-        }
 
         if (target.id === 'decimal-btn') {
             decimalCount++; 
@@ -459,3 +447,87 @@ window.onload = function() {
       window.addEventListener('mouseup', reset);
     });
   }
+
+  // KEYBOARD SUPPORT 
+
+  // keyboard for numbers display: 
+
+  document.addEventListener('keydown', (event) => { 
+    const keyName = event.key; 
+    const keyCode = event.code;
+    const displayValue = document.getElementById('numbers-display'); 
+    const equationDisplay = document.querySelector("#equation-display"); 
+
+   if (event.shiftKey) return; 
+   
+   if (keyName === "0" || keyCode === "Digit0") { 
+        if(displayValue.textContent == "0") { 
+            return; 
+        } else {
+            populateDisplay(0); 
+        } 
+   } else if (keyName === "1" || keyCode === "Digit1") { 
+       if (displayValue.textContent === "0") { 
+        newResult = true;
+        populateDisplay("1"); 
+       } else { 
+           populateDisplay("1"); 
+       }
+   } else if (keyName === "2" || keyCode === "Digit2") { 
+        if (displayValue.textContent === "0") { 
+        newResult = true;
+        populateDisplay("2"); 
+        } else { 
+            populateDisplay("2"); 
+        }
+    } else if (keyName === "3" || keyCode === "Digit3") { 
+        if (displayValue.textContent === "0") { 
+         newResult = true;
+         populateDisplay("3"); 
+        } else { 
+            populateDisplay("3"); 
+        }
+    } else if (keyName === "4" || keyCode === "Digit4") { 
+        if (displayValue.textContent === "0") { 
+         newResult = true;
+         populateDisplay("4"); 
+        } else { 
+            populateDisplay("4"); 
+        }
+    } else if (keyName === "5" || keyCode === "Digit5") { 
+        if (displayValue.textContent === "0") { 
+         newResult = true;
+         populateDisplay("5"); 
+        } else { 
+            populateDisplay("5"); 
+        }
+    } else if (keyName === "6" || keyCode === "Digit6") { 
+        if (displayValue.textContent === "0") { 
+         newResult = true;
+         populateDisplay("6"); 
+        } else { 
+            populateDisplay("6"); 
+        }
+    } else if (keyName === "7" || keyCode === "Digit7") { 
+        if (displayValue.textContent === "0") { 
+         newResult = true;
+         populateDisplay("7"); 
+        } else { 
+            populateDisplay("7"); 
+        }
+    } else if (keyName === "8" || keyCode === "Digit8") { 
+        if (displayValue.textContent === "0") { 
+         newResult = true;
+         populateDisplay("8"); 
+        } else { 
+            populateDisplay("8"); 
+        }
+    } else if (keyName === "9" || keyCode === "Digit9") { 
+        if (displayValue.textContent === "0") { 
+         newResult = true;
+         populateDisplay("9"); 
+        } else { 
+            populateDisplay("9"); 
+        }
+    }
+  }, false); 
