@@ -181,6 +181,8 @@ button:hover {
 
 button:active { 
     background-color: white;
+    background: linear-gradient(349deg, rgb(208 255 246), rgb(255 247 210 / 71%))
+    
 }
 
 

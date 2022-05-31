@@ -89,6 +89,12 @@ function populateDisplay(num){
     } else {
         newResult = false
         // clearDisplay(); 
+        if (displayValue.textContent.includes('NaN') == true || displayValue.textContent.includes('Infinity') == true) {
+            clearDisplay;
+        }
+        if (equationDisplay.textContent.includes('NaN') == true || equationDisplay.textContent.includes('Infinity') == true) {
+            clearEquation;
+        }
         displayNumbers(); 
     }
 
@@ -121,7 +127,23 @@ let numberButtons = document.querySelectorAll('.numberButton');
 [...numberButtons].forEach((button) => { 
     button.addEventListener('click', function(event) {
         const displayValue = document.getElementById('numbers-display'); 
+        const equationDisplay = document.querySelector("#equation-display")
+
         let target = event.target
+
+        if (displayValue.textContent.includes('NaN') || displayValue.textContent.includes('Infinity')) {
+            clearDisplay;
+            displayValue.textContent = 'ERR'
+        }
+        if (equationDisplay.textContent.includes('NaN') || equationDisplay.textContent.includes('Infinity')) {
+            clearEquation;
+            equationDisplay.textContent = 'ERR'
+        }
+
+        if (displayValue.textContent.length > 18) { 
+            displayValue.textContent = expo(displayValue.textContent, 3); 
+        }
+
         if (target.id === 'decimal-btn') {
             decimalCount++; 
             console.log(decimalCount)
@@ -153,7 +175,14 @@ const mathButtons = document.querySelectorAll('.math-buttons');
     button.addEventListener('click', function(event) {
         let target = event.target
         decimalCount = 0; 
-        if(target.id === "add-btn") { 
+
+        const displayValue = document.getElementById('numbers-display'); 
+        const equationDisplay = document.querySelector("#equation-display"); 
+
+        if (equationDisplay.textContent.includes('ERR') === true || equationDisplay.textContent.includes('Infinity') === true || equationDisplay.textContent.includes('NaN') === true) {
+
+        }
+         if(target.id === "add-btn") { 
             const displayValue = document.getElementById('numbers-display'); 
             const equationDisplay = document.querySelector("#equation-display"); 
             if (!firstNumber) { // if firstNumber is empty
@@ -161,13 +190,17 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 console.log(`FirstNumber is ${firstNumber}`) 
                 operation = add; 
                 clearDisplay(); 
-                equationDisplay.textContent += '+';
+                if(!equationDisplay.textContent.includes('+')) { 
+                    equationDisplay.textContent += '+';
+                }
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
                     evaluate(); 
                     operation = add
                     console.log(operation); 
-                    equationDisplay.textContent += '+';
+                    if(!equationDisplay.textContent.includes('+')) { 
+                        equationDisplay.textContent += '+';
+                    }
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
                     operation = add; 
@@ -296,6 +329,8 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                     firstNumber = parseFloat(displayValue.textContent); 
                     operation = exponentiation; 
                     clearDisplay(); 
+                    equationDisplay.textContent += '^'; 
+
                 }
             }
         }
