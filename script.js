@@ -4,6 +4,7 @@ let secondNumber = '';
 let operation = '';
 let newResult = true; 
 let decimalCount = 0; 
+let equationIsClear = true
 
 
 // MATH FUNCTIONS 
@@ -85,10 +86,10 @@ deleteButton.addEventListener('click', () => {
     equationDisplay.textContent = equationDisplay.textContent.slice(0,-1); 
 });
 
-// POPULATE DISPLAY WITH NUMBER INPUTS:23
+// POPULATE DISPLAY WITH NUMBER INPUTS:
 function populateDisplay(num){ 
     const displayValue = document.getElementById('numbers-display'); 
-    const equationDisplay = document.querySelector("#equation-display")
+    const equationDisplay = document.querySelector("#equation-display"); 2
 
 
     if (!newResult) { 
@@ -96,31 +97,48 @@ function populateDisplay(num){
     } else {
         newResult = false
         clearDisplay(); 
-        clearEquation();
         displayNumbers(); 
     }
 
     function displayNumbers() { 
-        if(displayValue.textContent.length < 19) {
-            newResult = false
-            if(displayValue.textContent == "0" && num === ".") { 
-                displayValue.textContent += num;
-                equationDisplay.textContent += num;
-            } else if (displayValue.textContent === "0" && num !=="."){
-                displayValue.textContent = num
-                equationDisplay.textContent = num
-            } else if (displayValue.textContent == "") { 
-                displayValue.textContent = num; 
-                equationDisplay.textContent += num;
+        newResult = false
+        if(displayValue.textContent == "0" && num === ".") { 
+            displayValue.textContent += num;
+            equationDisplay.textContent += num;
+        } else if (displayValue.textContent === "0" && num !=="."){
+            displayValue.textContent = num
+            equationDisplay.textContent = num;
 
-            } else { 
-                displayValue.textContent += num;
-                equationDisplay.textContent += num;
+        } else if (displayValue.textContent == "") { 
+            displayValue.textContent = num; 
+            equationDisplay.textContent += num;
 
-            };
-        }
+        } else { 
+            displayValue.textContent += num;
+            equationDisplay.textContent +=num;
+
+        };
     };
 };
+
+// function populateEquation(num) { 
+//     const equationDisplay = document.querySelector("#equation-display"); 
+//     if (equationIsClear === true) { 
+//         displayEquation(); 
+//     }
+
+//     function displayEquation() { 
+//         if (equationDisplay.textContent === '0' && num === ".") {
+//             equationDisplay.textContent += num;
+//         } else if (equationDisplay.textContent === '0' && num !== '.') {
+//             equationDisplay.textContent = num;
+//         } else if (displayValue.textContent = '') {
+//             equationDisplay = num;
+//         } else {
+//             displayValue.textContent += num;
+//         }
+//     }
+// }
 
 
 // NUMBER BUTTONS 
@@ -129,7 +147,6 @@ let numberButtons = document.querySelectorAll('.numberButton');
 [...numberButtons].forEach((button) => { 
     button.addEventListener('click', function(event) {
         const displayValue = document.getElementById('numbers-display'); 
-        // const equationDisplay = document.querySelector("#equation-display")
         let target = event.target
 
         if (target.id === 'decimal-btn') {
