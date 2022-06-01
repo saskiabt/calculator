@@ -49,7 +49,7 @@ const root = function(num1,num2) {
 
     if (num1 === 0 || num2 === 0) return 0; 
     if (num1 < 0 || num2 <0) return 0;
-    return num1**(1/num2); 
+    return num2**(1/num1); 
 }
 
 // CLEAR DISPLAY FUNCTION
@@ -129,32 +129,30 @@ let numberButtons = document.querySelectorAll('.numberButton');
 [...numberButtons].forEach((button) => { 
     button.addEventListener('click', function(event) {
         const displayValue = document.getElementById('numbers-display'); 
-        const equationDisplay = document.querySelector("#equation-display")
-
+        // const equationDisplay = document.querySelector("#equation-display")
         let target = event.target
-
 
         if (target.id === 'decimal-btn') {
             decimalCount++; 
-            console.log(decimalCount)
             if (target.id === "decimal-btn" && decimalCount >1) { 
                 return;
             } else {
                 populateDisplay(".")
             };
-        } else {
-            if(target.id === 'zero-btn') { 
-                if(displayValue.textContent == "0") { 
-                    return; 
-                } else {
-                    populateDisplay(0); 
-                }
-            } else if (displayValue.textContent === '0') {
-                newResult = true;
-                populateDisplay(event.target.textContent); 
-            } else { 
-                populateDisplay(event.target.textContent); 
+        } 
+        
+        if(target.id === 'zero-btn') { 
+            if(displayValue.textContent == "0") { 
+                return; 
+            } else {
+                populateDisplay(0); 
             }
+        } else if (displayValue.textContent === '0') {
+            newResult = true;
+            populateDisplay(event.target.textContent); 
+        } else { 
+            populateDisplay(event.target.textContent); 
+        
         } 
     }); 
 })
@@ -169,32 +167,26 @@ const mathButtons = document.querySelectorAll('.math-buttons');
         const displayValue = document.getElementById('numbers-display'); 
         const equationDisplay = document.querySelector("#equation-display"); 
 
-        if (equationDisplay.textContent.includes('ERR') === true || equationDisplay.textContent.includes('Infinity') === true || equationDisplay.textContent.includes('NaN') === true) {
-
-        }
-         if(target.id === "add-btn") { 
+    
+        if(target.id === "add-btn") { 
             const displayValue = document.getElementById('numbers-display'); 
             const equationDisplay = document.querySelector("#equation-display"); 
+
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
                 operation = add; 
                 clearDisplay(); 
-                if(!equationDisplay.textContent.includes('+')) { 
-                    equationDisplay.textContent += '+';
-                }
+                equationDisplay.textContent += '+';
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+                    equationDisplay.textContent += '+';
                     evaluate(); 
-                    operation = add
-                    console.log(operation); 
-                    if(!equationDisplay.textContent.includes('+')) { 
-                        equationDisplay.textContent += '+';
-                    }
+                    operation = add; 
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
+                    equationDisplay.textContent += '+';
                     operation = add; 
-                    clearDisplay(); 
                 }
             }
         }
@@ -211,14 +203,13 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 equationDisplay.textContent += '-';
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+                    equationDisplay.textContent += '-';
                     evaluate(); 
                     operation = subtract; 
-                    console.log(operation); 
-                    equationDisplay.textContent += '-';
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
+                    equationDisplay.textContent += '-';
                     operation = subtract; 
-                    clearDisplay(); 
                 }
             }
         }
@@ -235,14 +226,13 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 equationDisplay.textContent += '*';
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+                    equationDisplay.textContent += '*';
                     evaluate(); 
                     operation = multiply; 
-                    console.log(operation); 
-                    equationDisplay.textContent += '*';
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
+                    equationDisplay.textContent += '*';
                     operation = multiply; 
-                    // clearDisplay(); 
                 }
             }
         }
@@ -254,19 +244,18 @@ const mathButtons = document.querySelectorAll('.math-buttons');
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
-                operation = divide;
+                operation = divide; 
                 clearDisplay(); 
                 equationDisplay.textContent += '/';
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
-                    evaluate(); 
-                    operation = divide;
                     equationDisplay.textContent += '/';
+                    evaluate(); 
+                    operation = divide; 
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
-                    operation = divide; 
-                    clearDisplay(); 
                     equationDisplay.textContent += '/';
+                    operation = divide; 
                 }
             }
         }
@@ -278,18 +267,18 @@ const mathButtons = document.querySelectorAll('.math-buttons');
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
-                operation = exponentiation;
+                operation = exponentiation; 
                 clearDisplay(); 
                 equationDisplay.textContent += '^';
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
-                    evaluate(); 
-                    operation = exponentiation;
                     equationDisplay.textContent += '^';
+                    evaluate(); 
+                    operation = exponentiation; 
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
+                    equationDisplay.textContent += '^';
                     operation = exponentiation; 
-                    clearDisplay(); 
                 }
             }
         }
@@ -301,21 +290,18 @@ const mathButtons = document.querySelectorAll('.math-buttons');
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
-                operation = root;
+                operation = root; 
                 clearDisplay(); 
-                if(!equationDisplay.textContent.includes('√')) { 
-                    equationDisplay.textContent += '√';
-                }
+                equationDisplay.textContent += '√';
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+                    equationDisplay.textContent += '√';
                     evaluate(); 
-                    operation = root;
+                    operation = root; 
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
-                    operation = exponentiation; 
-                    clearDisplay(); 
-                    equationDisplay.textContent += '^'; 
-
+                    equationDisplay.textContent += '√';
+                    operation = root; 
                 }
             }
         }
@@ -372,11 +358,6 @@ function evaluate() {
         firstNumber = Number(firstNumber); 
         let result = operate(operation, firstNumber,secondNumber); 
         console.log(result); 
-
-        // round result to scientific notation w/ 3 figs if above 8 figs
-        if (result.toString().length > 8) { 
-            result = expo(result,3); 
-        }
         clearDisplay(); 
         clearEquation()
         populateDisplay(result); 
@@ -387,11 +368,6 @@ function evaluate() {
         firstNumber = displayValue.textContent; // sets firstNumber equal to the result // 
 
         let result = operate(operation, secondNumber,firstNumber); 
-        console.log(result.toString().length); 
-
-        if (result.toString().length > 8) { 
-            result = expo(result,3); 
-        }
         clearDisplay(); 
         clearEquation()
         populateDisplay(result); 
