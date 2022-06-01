@@ -85,7 +85,7 @@ deleteButton.addEventListener('click', () => {
     equationDisplay.textContent = equationDisplay.textContent.slice(0,-1); 
 });
 
-// POPULATE DISPLAY WITH NUMBER INPUTS:
+// POPULATE DISPLAY WITH NUMBER INPUTS:23
 function populateDisplay(num){ 
     const displayValue = document.getElementById('numbers-display'); 
     const equationDisplay = document.querySelector("#equation-display")
@@ -242,7 +242,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
                     operation = multiply; 
-                    clearDisplay(); 
+                    // clearDisplay(); 
                 }
             }
         }
@@ -466,15 +466,15 @@ equalsButton.addEventListener('click', () => {
             case "Enter": 
                 document.getElementById('equal-btn').click();
                 break;
-            // case "Delete":
-            //     document.getElementById("delete-btn").click(); 
-            //     break;
-      }
-      if (eventKey === 'Delete' || event.code === 'Delete') { 
-          deleteButton.click(); 
-      }
+            case "Backspace": 
+               document.getElementById("delete-btn").click();
+                break;
+            case "Delete": 
+                document.getElementById("delete-btn").click(); 
+                break;
+        }
       return false; 
-    })
+    });
 
 
 // Make the calculator draggable: // 
