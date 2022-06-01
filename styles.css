@@ -161,7 +161,7 @@ body {
 }
 
 button { 
-    background-color: rgb(206 243 227);
+    background: linear-gradient(349deg, rgb(208 255 246), rgb(255 247 210 / 71%));
     border: 1px #b0cdcc solid; 
     border-radius: 30%;
     font-size: 20px;
@@ -181,7 +181,7 @@ button:hover {
 
 button:active { 
     background-color: white;
-    background: linear-gradient(349deg, rgb(208 255 246), rgb(255 247 210 / 71%))
+    /* background-color: rgb(206 243 227); */
     
 }
 

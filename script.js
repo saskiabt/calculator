@@ -88,13 +88,8 @@ function populateDisplay(num){
         displayNumbers(); 
     } else {
         newResult = false
-        // clearDisplay(); 
-        if (displayValue.textContent.includes('NaN') == true || displayValue.textContent.includes('Infinity') == true) {
-            clearDisplay;
-        }
-        if (equationDisplay.textContent.includes('NaN') == true || equationDisplay.textContent.includes('Infinity') == true) {
-            clearEquation;
-        }
+        clearDisplay(); 
+        clearEquation();
         displayNumbers(); 
     }
 
@@ -529,5 +524,119 @@ window.onload = function() {
         } else { 
             populateDisplay("9"); 
         }
+    } else if (keyName === 'Delete' || keyCode === 'Delete') { 
+        displayValue.textContent = displayValue.textContent.slice(0,-1); 
+        equationDisplay.textContent = equationDisplay.textContent.slice(0,-1); 
+    }
+ 
+// OPERATION KEYS 
+    if (keyName === '*' && keyCode === 'NumpadMultiply') { 
+        const displayValue = document.getElementById('numbers-display'); 
+        const equationDisplay = document.querySelector("#equation-display"); 
+
+        if (!firstNumber) { // if firstNumber is empty
+            firstNumber = parseFloat(displayValue.textContent); 
+            console.log(`FirstNumber is ${firstNumber}`) 
+            operation = multiply; 
+            clearDisplay(); 
+            equationDisplay.textContent += '*';
+        } else { // if firstNumber has already been declared 
+            if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+                evaluate(); 
+                operation = multiply; 
+                console.log(operation); 
+                equationDisplay.textContent += '*';
+            } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
+                firstNumber = parseFloat(displayValue.textContent); 
+                operation = multiply; 
+                clearDisplay(); 
+            }
+        }
+    } else if (keyName === '-' || keyCode === 'NumpadSubtract') { 
+        const displayValue = document.getElementById('numbers-display'); 
+        const equationDisplay = document.querySelector("#equation-display"); 
+
+        if (!firstNumber) { // if firstNumber is empty
+            firstNumber = parseFloat(displayValue.textContent); 
+            console.log(`FirstNumber is ${firstNumber}`) 
+            operation = subtract; 
+            clearDisplay(); 
+            equationDisplay.textContent += '-';
+        } else { // if firstNumber has already been declared 
+            if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+                evaluate(); 
+                operation = subtract; 
+                console.log(operation); 
+                equationDisplay.textContent += '-';
+            } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
+                firstNumber = parseFloat(displayValue.textContent); 
+                operation = subtract; 
+                clearDisplay(); 
+            }
+        }
+    } else if (keyName === "+" || keyCode === "NumpadAdd") { 
+        const displayValue = document.getElementById('numbers-display'); 
+        const equationDisplay = document.querySelector("#equation-display"); 
+        if (!firstNumber) { // if firstNumber is empty
+            firstNumber = parseFloat(displayValue.textContent); 
+            console.log(`FirstNumber is ${firstNumber}`) 
+            operation = add; 
+            clearDisplay(); 
+            if(!equationDisplay.textContent.includes('+')) { 
+                equationDisplay.textContent += '+';
+            }
+        } else { // if firstNumber has already been declared 
+            if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+                evaluate(); 
+                operation = add
+                console.log(operation); 
+                if(!equationDisplay.textContent.includes('+')) { 
+                    equationDisplay.textContent += '+';
+                }
+            } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
+                firstNumber = parseFloat(displayValue.textContent); 
+                operation = add; 
+                clearDisplay(); 
+            }
+        }
+    } else if (keyName === '/' || keyCode === 'NumpadDivide') { 
+        const displayValue = document.getElementById('numbers-display'); 
+        const equationDisplay = document.querySelector("#equation-display"); 
+
+        if (!firstNumber) { // if firstNumber is empty
+            firstNumber = parseFloat(displayValue.textContent); 
+            console.log(`FirstNumber is ${firstNumber}`) 
+            operation = divide;
+            clearDisplay(); 
+            equationDisplay.textContent += '/';
+        } else { // if firstNumber has already been declared 
+            if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+                evaluate(); 
+                operation = divide;
+                equationDisplay.textContent += '/';
+            } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
+                firstNumber = parseFloat(displayValue.textContent); 
+                operation = divide; 
+                clearDisplay(); 
+                equationDisplay.textContent += '/';
+            }
+        }
+    } else if (keyName === '.' || keyCode === 'NumpadDecimal') { 
+        decimalCount++; 
+        console.log(decimalCount)
+        if (decimalCount >1) { 
+            return;
+        } else {
+            populateDisplay(".")
+        };
+    }
+
+    // enter key 
+    if (keyName === 'Enter' || keyCode === 'Enter') { 
+        if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+            evaluate(); 
+        }
+        operation = null; 
     }
   }, false); 
+
