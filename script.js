@@ -51,13 +51,12 @@ const exponentiation = function(num1,num2) {
     return num1**num2;
 }
 
-const root = function(num1,num2) { 
+const sqRoot = function(num1) { 
     num1=parseFloat(num1); 
-    num2 = parseFloat(num2); 
 
-    if (num1 === 0 || num2 === 0) return 0; 
-    if (num1 < 0 || num2 <0) return 0;
-    return num2**(1/num1); 
+    if (num1 === 0) return 0; 
+    if (num1 < 0) return 0;
+    return Math.sqrt(num1); 
 }
 
 // CLEAR DISPLAY FUNCTION
@@ -179,7 +178,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 operation = add; 
                 clearDisplay(); 
             } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
                     evaluate(); 
                     equationIsClear = false; 
                     operation = add
@@ -199,7 +198,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 operation = subtract; 
                 clearDisplay(); 
             } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
                     evaluate(); 
                     equationIsClear = false
                     operation = subtract; 
@@ -219,7 +218,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 operation = multiply; 
                 clearDisplay(); 
             } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
                     evaluate(); 
                     equationIsClear = false
                     operation = multiply; 
@@ -239,7 +238,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 operation = divide;
                 clearDisplay(); 
             } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
                     evaluate(); 
                     equationIsClear = false
                     operation = divide;
@@ -258,7 +257,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 operation = exponentiation;
                 clearDisplay(); 
             } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
                     evaluate(); 
                     equationIsClear = false
                     operation = exponentiation;
@@ -270,17 +269,18 @@ const mathButtons = document.querySelectorAll('.math-buttons');
             }
         }
 
-        if(target.id === "root-btn") { 
+        if(target.id === "sqRoot-btn") { 
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
-                operation = root;
-                clearDisplay(); 
+                operation = sqRoot;
+                evaluate()
+                // clearDisplay(); 
             } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
                     evaluate(); 
                     equationIsClear = false
-                    operation = root;
+                    operation = sqRoot;
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
                     operation = exponentiation; 
@@ -376,7 +376,7 @@ function evaluate() {
 const equalsButton = document.getElementById("equal-btn")
 equalsButton.addEventListener('click', () => { 
 
-    if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
+    if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
         evaluate(); 
     };
     operation = null; 
