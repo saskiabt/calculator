@@ -198,6 +198,9 @@ button:active {
     padding-right: 2px;
 }
 
+#signature:hover { 
+    cursor:pointer; 
+}
 .topButton { 
     font-family: dico-code-two,mono;
     color: rgb(98 98 134)
@@ -207,12 +210,6 @@ button:active {
     font-size: 16px;
 }
 
-/* #source-Code { 
-    display: flex;
-    justify-self: flex-start;
-    align-self: flex-end;
-    margin-top: 30px;
-} */
 
 
 /*//////////* STYLES FOR MOBILE //////////////////////////////////////////////////////////////////////////////////*/
