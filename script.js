@@ -292,16 +292,27 @@ const mathButtons = document.querySelectorAll('.math-buttons');
     })
 })
 
+function checkIsNegative(num) { 
+   if (num.charAt(0) === "-") {
+        return true;
+   } return false;
+}
 // PLUS MINUS BUTTON 
 const plusMinusButton = document.querySelector("#plus-minus-btn"); 
 plusMinusButton.addEventListener('click', () => { 
-    const equationDisplay = document.querySelector("#equation-display"); 
 
-    if (displayValue.textContent.includes('-') === false) { 
-        displayValue.textContent = `-${displayValue.textContent}`;
+    if (checkIsNegative(displayValue.textContent) === true) { 
+        displayValue.textContent.substring(1); 
     } else { 
-        displayValue.textContent = displayValue.textContent.substring(1); 
+        displayValue.textContent = `-${displayValue.textContent}`;
+        newResult = false;
     }
+    
+    // if (displayValue.textContent.includes('-') === false) { 
+    //     displayValue.textContent = `-${displayValue.textContent}`;
+    // } else { 
+    //     displayValue.textContent = displayValue.textContent.substring(1); 
+    // }
 
  
 })
