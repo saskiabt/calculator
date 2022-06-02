@@ -137,7 +137,7 @@ function populateEquation(num) {
         if (equationDisplay.textContent === '0' && num === ".") {
             equationDisplay.textContent += num;
         } else if (equationDisplay.textContent === '0' && num !== '.') {
-            equationDisplay.textContent = num;
+            equationDisplay.textContent += num;
         } else if (equationDisplay.textContent = '') {
             equationDisplay.textContent += num;
         } else {
@@ -395,6 +395,7 @@ function evaluate() {
         clearDisplay(); 
         clearEquation()
         populateDisplay(result); 
+        populateEquation(result);
         firstNumber= result;
         secondNumber = null;
         newResult = true; 
