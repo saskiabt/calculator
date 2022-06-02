@@ -379,7 +379,7 @@ button:active {
         font-style: normal;
         font-size: 0.9em;
         color: rgb(13 13 113);
-        border-bottom: 3px groove rgb(255, 203, 203);
+        /* border-bottom: 3px groove rgb(255, 203, 203); */
         padding-left: 2px;
         padding-right: 2px;
     } 
