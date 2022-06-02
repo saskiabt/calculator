@@ -188,7 +188,7 @@ button:active {
 
 #signature { 
     place-self: flex-end;
-    font-family: mencken-std-narrow, sans-serif;
+    font-family: duffy-script,sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: 0.9em;
@@ -383,7 +383,7 @@ button:active {
 
     #signature { 
         place-self: flex-end;
-        font-family: mencken-std-narrow, sans-serif;
+        font-family: duffy-script,sans-serif;
         font-weight: 400;
         font-style: normal;
         font-size: 0.9em;

@@ -301,8 +301,10 @@ function checkIsNegative(num) {
 const plusMinusButton = document.querySelector("#plus-minus-btn"); 
 plusMinusButton.addEventListener('click', () => { 
 
-    if (checkIsNegative(displayValue.textContent) === true) { 
-        displayValue.textContent.substring(1); 
+    let boolean = checkIsNegative(displayValue.textContent);
+    console.log(boolean);
+    if (boolean=== true) { 
+        displayValue.textContent = displayValue.textContent.substring(1); 
     } else { 
         displayValue.textContent = `-${displayValue.textContent}`;
         newResult = false;
