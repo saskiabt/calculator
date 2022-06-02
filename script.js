@@ -355,6 +355,7 @@ function evaluate() {
 
         let result = operate(operation, secondNumber,firstNumber); 
         result = Math.round(result*10000000000)/10000000000; 
+        
 
         clearDisplay(); 
         populateDisplay(result); 
@@ -472,3 +473,20 @@ window.onload = function() {
       window.addEventListener('mouseup', reset);
     });
   }
+
+  // create link to source code: 
+    let a = document.createElement('a'); 
+    let signature = document.getElementById('signature'); 
+    a.textContent = "Made by Saskia Binder"; 
+    signature.appendChild(a);
+    signature.addEventListener('click', () => { 
+        newTab(); 
+    })
+
+    function newTab() { 
+        window.open(
+            a.href = 'https://github.com/saskiabt/calculator'
+        )
+    }
+    
+    

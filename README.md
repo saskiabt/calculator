@@ -25,10 +25,4 @@ Functionality / Specs:
 
 To be added as of 5/26/22: 
 
-<!-- 1) Keyboard Functionality  -->
-
-2) Max number of digits to not overflow the display when large numbers are added
-
-<!-- 3) Delete button functionality  -->
-
-4) Plus/Minus Button Functionality 
+1) Max number of digits to not overflow the display when large numbers are added
