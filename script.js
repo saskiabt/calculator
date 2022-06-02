@@ -36,7 +36,10 @@ const divide = function(num1,num2) {
     if (num2 == 0) { 
      return ' (: error '; 
     } 
-    return num1 / num2; 
+
+    if (num1 >10000) { 
+        return (num1/num2).toFixed(2)
+    } else return num1 / num2; 
 }
 
 const exponentiation = function(num1,num2) {
@@ -336,23 +339,32 @@ function evaluate() {
     if(!operation) { // if an operation has not been chosen and user selects equals before selecting operation
         firstNumber = parseFloat(displayValue.textContent); 
         newResult = true; 
+
     } else if (typeof firstNumber !== 'number') { // if firstNumber has been reset to blank string, allows for looping through multiple calls of evaluate()
         firstNumber = parseFloat(displayValue.textContent); 
+
         let result = operate(operation, firstNumber,secondNumber); 
+        result = Math.round(result*10000000000)/10000000000; 
+
         clearDisplay(); 
         populateDisplay(result); 
+
         equationDisplay.textContent = result; 
         equationIsClear = true;
         firstNumber = ''; 
         newResult = true;
+        
     } else { 
         secondNumber = firstNumber; 
         firstNumber = displayValue.textContent; // sets firstNumber equal to the result // 
 
         let result = operate(operation, secondNumber,firstNumber); 
+        result = Math.round(result*10000000000)/10000000000; 
+
         clearDisplay(); 
         populateDisplay(result); 
         equationDisplay.textContent = result; 
+
         equationIsClear = true;
         firstNumber= result;
         secondNumber = null;
