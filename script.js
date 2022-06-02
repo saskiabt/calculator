@@ -93,8 +93,6 @@ deleteButton.addEventListener('click', () => {
 // POPULATE DISPLAY WITH NUMBER INPUTS:
 function populateDisplay(num){ 
     const displayValue = document.getElementById('numbers-display'); 
-    // const equationDisplay = document.querySelector("#equation-display"); 2
-
 
     if (!newResult) { 
         displayNumbers(); 
@@ -108,15 +106,13 @@ function populateDisplay(num){
         newResult = false
         if(displayValue.textContent == "0" && num === ".") { 
             displayValue.textContent += num;
-        } else if (displayValue.textContent === "0" && num !=="."){
-            displayValue.textContent += num
-        }
-        
-        if (displayValue.textContent == "") { 
+
+        } else if (displayValue.textContent == "") { 
             displayValue.textContent = num; 
+
         } else { 
             displayValue.textContent += num;
-
+    
         };
     };
 };
@@ -158,28 +154,25 @@ let numberButtons = document.querySelectorAll('.numberButton');
 
         if (target.id === 'decimal-btn') {
             decimalCount++; 
+            console.log(decimalCount)
             if (target.id === "decimal-btn" && decimalCount >1) { 
                 return;
             } else {
-                populateDisplay(".");
-                populateEquation(".");
-                decimalCount++;
+                populateDisplay(".")
             };
-        } 
-        
-        if(target.id === 'zero-btn') { 
-            if(displayValue.textContent == "0") { 
-                return; 
-            } else {
-                populateDisplay(0); 
+        } else {
+            if(target.id === 'zero-btn') { 
+                if(displayValue.textContent == "0") { 
+                    return; 
+                } else {
+                    populateDisplay(0); 
+                }
+            } else if (displayValue.textContent === '0') {
+                newResult = true;
+                populateDisplay(event.target.textContent); 
+            } else { 
+                populateDisplay(event.target.textContent); 
             }
-        } else if (displayValue.textContent === '0') {
-            newResult = true;
-            populateDisplay(event.target.textContent); 
-        } else if (target.id !== 'decimal-btn') { 
-            populateDisplay(event.target.textContent); 
-            populateEquation(event.target.textContent); 
-        
         } 
     }); 
 })
