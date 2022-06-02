@@ -23,6 +23,6 @@ Functionality / Specs:
 
 4) Plus/Minus Button Functionality, works with negative numbers. Disables adding minus sign to number if there is already a minus sign attached to it. 
 
-To be added as of 5/26/22: 
+To be added as of 6/2/22: 
 
 1) Max number of digits to not overflow the display when large numbers are added
