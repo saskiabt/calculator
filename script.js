@@ -107,16 +107,18 @@ function populateDisplay(num){
     }
 
     function displayNumbers() { 
-        newResult = false
-        if(displayValue.textContent == "0" && num === ".") { 
-            displayValue.textContent += num;
+        if (displayValue.textContent.length < 11) {
+            newResult = false
+            if(displayValue.textContent == "0" && num === ".") { 
+                displayValue.textContent += num;
 
-        } else if (displayValue.textContent == "") { 
-            displayValue.textContent = num; 
+            } else if (displayValue.textContent == "") { 
+                displayValue.textContent = num; 
 
-        } else { 
-            displayValue.textContent += num;
-    
+            } else { 
+                displayValue.textContent += num;
+        
+            };
         };
     };
 };
