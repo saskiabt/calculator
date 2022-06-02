@@ -66,6 +66,7 @@ function clearDisplay() {
     decimalCount = 0;
 }
 
+// CLEAR EQUATION FUNCTION
 function clearEquation() { 
     const equationDisplay = document.querySelector("#equation-display"); 
     equationDisplay.textContent = []; 
@@ -129,7 +130,6 @@ function populateEquation(foo) {
 }
 
 // NUMBER BUTTONS 
-
 let numberButtons = document.querySelectorAll('.numberButton'); 
 [...numberButtons].forEach((button) => { 
     button.addEventListener('click', function(event) {
@@ -275,7 +275,6 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 console.log(`FirstNumber is ${firstNumber}`) 
                 operation = sqRoot;
                 evaluate()
-                // clearDisplay(); 
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
                     evaluate(); 
@@ -309,14 +308,7 @@ plusMinusButton.addEventListener('click', () => {
         displayValue.textContent = `-${displayValue.textContent}`;
         newResult = false;
     }
-    
-    // if (displayValue.textContent.includes('-') === false) { 
-    //     displayValue.textContent = `-${displayValue.textContent}`;
-    // } else { 
-    //     displayValue.textContent = displayValue.textContent.substring(1); 
-    // }
 
- 
 })
 
 
