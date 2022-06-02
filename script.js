@@ -371,12 +371,8 @@ function evaluate() {
         newResult = true; 
     } else if (typeof firstNumber !== 'number') { // if firstNumber has been reset to blank string, allows for looping through multiple calls of evaluate()
         firstNumber = parseFloat(displayValue.textContent); 
-        console.log(typeof firstNumber); 
-        firstNumber = Number(firstNumber); 
         let result = operate(operation, firstNumber,secondNumber); 
-        console.log(result); 
         clearDisplay(); 
-        clearEquation()
         populateDisplay(result); 
         firstNumber = ''; 
         newResult = true;
@@ -386,9 +382,7 @@ function evaluate() {
 
         let result = operate(operation, secondNumber,firstNumber); 
         clearDisplay(); 
-        clearEquation()
         populateDisplay(result); 
-        populateEquation(result);
         firstNumber= result;
         secondNumber = null;
         newResult = true; 
