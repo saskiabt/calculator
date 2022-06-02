@@ -330,7 +330,7 @@ button:active {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr) 2fr;
-        gap:5px;
+        gap:2px;
     } 
 
     #bbb-right { 
