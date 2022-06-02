@@ -6,6 +6,8 @@ let newResult = true;
 let decimalCount = 0; 
 let equationIsClear = true
 let equationDisplay = document.querySelector("#equation-display")
+const displayValue = document.getElementById('numbers-display'); 
+
 
 
 
@@ -60,7 +62,6 @@ const root = function(num1,num2) {
 
 // CLEAR DISPLAY FUNCTION
 function clearDisplay() {
-    const displayValue = document.getElementById('numbers-display'); 
     displayValue.textContent = ""
     newResult = true; 
     decimalCount = 0;
@@ -88,7 +89,6 @@ clearButton.addEventListener('click', () => {
 // DELETE BUTTON: REMOVE LAST CHARACTER OF NUMBER DISPLAY: 
 const deleteButton = document.querySelector("#delete-btn"); 
 deleteButton.addEventListener('click', () => { 
-    const displayValue = document.getElementById('numbers-display'); 
     const equationDisplay = document.querySelector("#equation-display"); 
 
     displayValue.textContent = displayValue.textContent.slice(0,-1); 
@@ -97,7 +97,6 @@ deleteButton.addEventListener('click', () => {
 
 // POPULATE DISPLAY WITH NUMBER INPUTS:
 function populateDisplay(num){ 
-    const displayValue = document.getElementById('numbers-display'); 
 
     if (!newResult) { 
         displayNumbers(); 
@@ -124,6 +123,10 @@ function populateDisplay(num){
 
 function populateEquation(foo) {
     equationDisplay.textContent += foo; 
+    if (equationIsClear == true) { 
+        clearEquation(); 
+        equationDisplay.textContent = foo
+    }
 }
 
 // NUMBER BUTTONS 
@@ -131,7 +134,6 @@ function populateEquation(foo) {
 let numberButtons = document.querySelectorAll('.numberButton'); 
 [...numberButtons].forEach((button) => { 
     button.addEventListener('click', function(event) {
-        const displayValue = document.getElementById('numbers-display'); 
         let target = event.target
 
         if (target.id === 'decimal-btn') {
@@ -171,7 +173,6 @@ const mathButtons = document.querySelectorAll('.math-buttons');
         }
 
         if(target.id === "add-btn") { 
-            const displayValue = document.getElementById('numbers-display'); 
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
@@ -192,7 +193,6 @@ const mathButtons = document.querySelectorAll('.math-buttons');
         }
 
         if(target.id === "subtract-btn") { 
-            const displayValue = document.getElementById('numbers-display'); 
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
@@ -213,7 +213,6 @@ const mathButtons = document.querySelectorAll('.math-buttons');
         }
 
         if(target.id === "multiply-btn") { 
-            const displayValue = document.getElementById('numbers-display'); 
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
@@ -234,7 +233,6 @@ const mathButtons = document.querySelectorAll('.math-buttons');
         }
 
         if(target.id === "divide-btn") { 
-            const displayValue = document.getElementById('numbers-display'); 
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
@@ -254,7 +252,6 @@ const mathButtons = document.querySelectorAll('.math-buttons');
         }
 
         if(target.id === "exponent-btn") { 
-            const displayValue = document.getElementById('numbers-display'); 
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
@@ -274,7 +271,6 @@ const mathButtons = document.querySelectorAll('.math-buttons');
         }
 
         if(target.id === "root-btn") { 
-            const displayValue = document.getElementById('numbers-display'); 
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
@@ -299,21 +295,15 @@ const mathButtons = document.querySelectorAll('.math-buttons');
 // PLUS MINUS BUTTON 
 const plusMinusButton = document.querySelector("#plus-minus-btn"); 
 plusMinusButton.addEventListener('click', () => { 
-    const displayValue = document.getElementById('numbers-display'); 
     const equationDisplay = document.querySelector("#equation-display"); 
 
     if (displayValue.textContent.includes('-') === false) { 
         displayValue.textContent = `-${displayValue.textContent}`;
     } else { 
         displayValue.textContent = displayValue.textContent.substring(1); 
-        // equationDisplay.textContent = equationDisplay.textContent.substring(1); 
     }
 
-    if (equationDisplay.textContent.includes('-') === false) { 
-        equationDisplay.textContent = `-${equationDisplay.textContent}`
-    } else { 
-        equationDisplay.textContent = equationDisplay.textContent.substring(1); 
-    }
+ 
 })
 
 
@@ -334,7 +324,6 @@ function expo(x,f) {
 }
 
 function evaluate() { 
-    const displayValue = document.getElementById('numbers-display'); 
 
     if(!operation) { // if an operation has not been chosen and user selects equals before selecting operation
         firstNumber = parseFloat(displayValue.textContent); 
@@ -353,7 +342,7 @@ function evaluate() {
         equationIsClear = true;
         firstNumber = ''; 
         newResult = true;
-        
+
     } else { 
         secondNumber = firstNumber; 
         firstNumber = displayValue.textContent; // sets firstNumber equal to the result // 

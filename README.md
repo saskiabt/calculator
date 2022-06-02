@@ -1,5 +1,6 @@
 # calculator
-Calculator built in JS, HTML and CSS.
+Calculator built in Javascript, CSS anc HTML.
+By Saskia Binder 
 Started 5/20/2022. 
 
 Functionality / Specs: 
@@ -16,13 +17,18 @@ Functionality / Specs:
 
 4) Original UI and design by me :)
 
+5) Keyboard Functionality for all numbers and operations.
+
+6) Delete button functionality, deletes one digit from the number display.
+
+4) Plus/Minus Button Functionality, works with negative numbers. Disables adding minus sign to number if there is already a minus sign attached to it. 
 
 To be added as of 5/26/22: 
 
-1) Keyboard Functionality 
+<!-- 1) Keyboard Functionality  -->
 
 2) Max number of digits to not overflow the display when large numbers are added
 
-3) Delete button functionality 
+<!-- 3) Delete button functionality  -->
 
 4) Plus/Minus Button Functionality 
