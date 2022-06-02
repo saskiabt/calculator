@@ -15,13 +15,15 @@ Functionality / Specs:
 
 5) Clear button to clear number display and equation display.
 
-4) Original UI and design by me :)
+6) Original UI and design by me :)
 
-5) Keyboard Functionality for all numbers and operations.
+7) Keyboard Functionality for all numbers and operations.
 
-6) Delete button functionality, deletes one digit from the number display.
+8) Delete button functionality, deletes one digit from the number display.
 
-4) Plus/Minus Button Functionality, works with negative numbers. Disables adding minus sign to number if there is already a minus sign attached to it. 
+9) Plus/Minus Button Functionality, works with negative numbers. Disables adding minus sign to number if there is already a minus sign attached to it. 
+
+10) Media query to add styling for phone; now functions on mobile.
 
 To be added as of 6/2/22: 
 
