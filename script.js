@@ -183,142 +183,120 @@ const mathButtons = document.querySelectorAll('.math-buttons');
     button.addEventListener('click', function(event) {
         let target = event.target
         decimalCount = 0; 
-    
+
         if(target.id === "add-btn") { 
             const displayValue = document.getElementById('numbers-display'); 
-            const equationDisplay = document.querySelector("#equation-display"); 
-
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
                 operation = add; 
                 clearDisplay(); 
-                populateEquation('+');
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
-                    populateEquation('+');
                     evaluate(); 
-                    operation = add; 
+                    operation = add
+                    console.log(operation); 
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
-                    populateEquation('+');
                     operation = add; 
+                    clearDisplay(); 
                 }
             }
         }
 
         if(target.id === "subtract-btn") { 
             const displayValue = document.getElementById('numbers-display'); 
-            const equationDisplay = document.querySelector("#equation-display"); 
-
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
                 operation = subtract; 
                 clearDisplay(); 
-                populateEquation('-');
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
-                    populateEquation('-');
                     evaluate(); 
                     operation = subtract; 
+                    console.log(operation); 
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
-                    populateEquation('-');
                     operation = subtract; 
+                    clearDisplay(); 
                 }
             }
         }
 
         if(target.id === "multiply-btn") { 
             const displayValue = document.getElementById('numbers-display'); 
-            const equationDisplay = document.querySelector("#equation-display"); 
-
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
                 operation = multiply; 
                 clearDisplay(); 
-                populateEquation('*');
-
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
-                    populateEquation('*');
                     evaluate(); 
                     operation = multiply; 
+                    console.log(operation); 
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
-                    populateEquation('*');
                     operation = multiply; 
+                    clearDisplay(); 
                 }
             }
         }
 
         if(target.id === "divide-btn") { 
             const displayValue = document.getElementById('numbers-display'); 
-            const equationDisplay = document.querySelector("#equation-display"); 
-
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
-                operation = divide; 
+                operation = divide;
                 clearDisplay(); 
-                populateEquation('/');
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
-                    populateEquation('/');
                     evaluate(); 
-                    operation = divide; 
+                    operation = divide;
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
-                    populateEquation('/');
                     operation = divide; 
+                    clearDisplay(); 
                 }
             }
         }
 
         if(target.id === "exponent-btn") { 
             const displayValue = document.getElementById('numbers-display'); 
-            const equationDisplay = document.querySelector("#equation-display"); 
-
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
-                operation = exponentiation; 
+                operation = exponentiation;
                 clearDisplay(); 
-                populateEquation('^');
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
-                    populateEquation('^');
                     evaluate(); 
-                    operation = exponentiation; 
+                    operation = exponentiation;
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
-                    populateEquation('^');
                     operation = exponentiation; 
+                    clearDisplay(); 
                 }
             }
         }
 
         if(target.id === "root-btn") { 
             const displayValue = document.getElementById('numbers-display'); 
-            const equationDisplay = document.querySelector("#equation-display"); 
-
             if (!firstNumber) { // if firstNumber is empty
                 firstNumber = parseFloat(displayValue.textContent); 
                 console.log(`FirstNumber is ${firstNumber}`) 
-                operation = root; 
+                operation = root;
                 clearDisplay(); 
-                populateEquation('√');
             } else { // if firstNumber has already been declared 
                 if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === root) {
-                    populateEquation('√');
                     evaluate(); 
-                    operation = root; 
+                    operation = root;
                 } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                     firstNumber = parseFloat(displayValue.textContent); 
-                    populateEquation('√');
-                    operation = root; 
+                    operation = exponentiation; 
+                    clearDisplay(); 
                 }
             }
         }
