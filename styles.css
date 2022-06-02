@@ -287,7 +287,7 @@ button:active {
         display: flex;
         justify-self: flex-end;
         align-self: flex-start;
-        font-size:26px;
+        font-size:18px;
         padding-left: 0px;
         direction: ltr;
         font-family: dico-code-two,mono;

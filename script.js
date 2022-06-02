@@ -349,7 +349,8 @@ function evaluate() {
         clearDisplay(); 
         populateDisplay(result); 
 
-        equationDisplay.textContent = result; 
+        // equationDisplay.textContent = result; 
+        clearEquation();
         equationIsClear = true;
         firstNumber = ''; 
         newResult = true;
@@ -363,9 +364,10 @@ function evaluate() {
 
         clearDisplay(); 
         populateDisplay(result); 
-        equationDisplay.textContent = result; 
+        // equationDisplay.textContent = result; 
 
         equationIsClear = true;
+        clearEquation();
         firstNumber= result;
         secondNumber = null;
         newResult = true; 
@@ -445,6 +447,8 @@ equalsButton.addEventListener('click', () => {
                 break;
             case "Escape":
                 document.getElementById("clear-btn").click();
+            case "^":
+                document.getElementById("exponent-btn").click();
         }
       return false; 
     });
