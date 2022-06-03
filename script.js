@@ -39,7 +39,7 @@ const divide = function(num1,num2) {
      return ' (: error '; 
     } 
 
-    if (num1 >10000) { 
+    if (num1 >10000 || num2 > 10000) { 
         return (num1/num2).toFixed(2)
     } else return num1 / num2; 
 }
@@ -376,12 +376,15 @@ function evaluate() {
 
 // EQUALS BUTTON --> EVALUATES FUNCTION 
 const equalsButton = document.getElementById("equal-btn")
-equalsButton.addEventListener('click', () => { 
-
-    if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
-        evaluate(); 
+equalsButton.addEventListener('click', (event) => { 
+    if (displayValue.textContent === '') {
+        event.preventDefault();
+    } else {
+        if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
+            evaluate(); 
+            operation = null; 
+        }
     };
-    operation = null; 
 }); 
 
   // KEYBOARD SUPPORT 
