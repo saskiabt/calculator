@@ -186,7 +186,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                     if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
                         evaluate(); 
                         equationIsClear = false; 
-                        operation = add
+                        operation = add;
                         console.log(operation); 
                     } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                         firstNumber = parseFloat(displayValue.textContent); 
@@ -205,7 +205,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 } else { // if firstNumber has already been declared 
                     if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
                         evaluate(); 
-                        equationIsClear = false
+                        equationIsClear = false;
                         operation = subtract; 
                         console.log(operation); 
                     } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
@@ -225,7 +225,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 } else { // if firstNumber has already been declared 
                     if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
                         evaluate(); 
-                        equationIsClear = false
+                        equationIsClear = false;
                         operation = multiply; 
                         console.log(operation); 
                     } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
@@ -245,7 +245,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 } else { // if firstNumber has already been declared 
                     if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
                         evaluate(); 
-                        equationIsClear = false
+                        equationIsClear = false;
                         operation = divide;
                     } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                         firstNumber = parseFloat(displayValue.textContent); 
@@ -264,7 +264,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 } else { // if firstNumber has already been declared 
                     if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
                         evaluate(); 
-                        equationIsClear = false
+                        equationIsClear = false;
                         operation = exponentiation;
                     } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                         firstNumber = parseFloat(displayValue.textContent); 
@@ -283,7 +283,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                 } else { // if firstNumber has already been declared 
                     if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
                         evaluate(); 
-                        equationIsClear = false
+                        equationIsClear = false;
                         operation = sqRoot;
                     } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                         firstNumber = parseFloat(displayValue.textContent); 
