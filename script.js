@@ -125,6 +125,7 @@ function populateDisplay(num){
 
 function populateEquation(foo) {
     equationDisplay.textContent += foo; 
+    console.log(equationIsClear)
     if (equationIsClear == true) { 
         clearEquation(); 
         equationDisplay.textContent = foo
@@ -168,9 +169,13 @@ const mathButtons = document.querySelectorAll('.math-buttons');
     button.addEventListener('click', function(event) {
         let target = event.target
         decimalCount = 0;
+        console.log(equationIsClear)
          
         if(equationIsClear == true && !operation) { 
-           populateEquation(target.textContent); 
+           populateEquation(target.textContent);
+           console.log('populate equation ran');  
+        } else if (equationIsClear == true) {
+            populateEquation(target.textContent);
         }
 
         if (displayValue.textContent === '') {
@@ -184,9 +189,11 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                     clearDisplay(); 
                 } else { // if firstNumber has already been declared 
                     if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
+                        equationIsClear = true;
                         evaluate(); 
                         equationIsClear = false; 
                         operation = add;
+                        populateEquation(event.target.textContent); 
                         console.log(operation); 
                     } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                         firstNumber = parseFloat(displayValue.textContent); 
@@ -204,9 +211,12 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                     clearDisplay(); 
                 } else { // if firstNumber has already been declared 
                     if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
+                        equationIsClear = true;
                         evaluate(); 
-                        equationIsClear = false;
+                        // equationIsClear = false;
                         operation = subtract; 
+                        populateEquation(target.textContent); 
+
                         console.log(operation); 
                     } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                         firstNumber = parseFloat(displayValue.textContent); 
@@ -224,9 +234,12 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                     clearDisplay(); 
                 } else { // if firstNumber has already been declared 
                     if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
+                        equationIsClear = true;
+
                         evaluate(); 
-                        equationIsClear = false;
+                        // equationIsClear = false;
                         operation = multiply; 
+                        populateEquation(event.target.textContent); 
                         console.log(operation); 
                     } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                         firstNumber = parseFloat(displayValue.textContent); 
@@ -244,9 +257,12 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                     clearDisplay(); 
                 } else { // if firstNumber has already been declared 
                     if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
+                        equationIsClear = true;
+
                         evaluate(); 
-                        equationIsClear = false;
+                        // equationIsClear = false;
                         operation = divide;
+                        populateEquation(event.target.textContent); 
                     } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                         firstNumber = parseFloat(displayValue.textContent); 
                         operation = divide; 
@@ -263,8 +279,10 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                     clearDisplay(); 
                 } else { // if firstNumber has already been declared 
                     if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
+                        equationIsClear = true;
+
                         evaluate(); 
-                        equationIsClear = false;
+                        // equationIsClear = false;
                         operation = exponentiation;
                     } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                         firstNumber = parseFloat(displayValue.textContent); 
@@ -282,8 +300,10 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                     evaluate()
                 } else { // if firstNumber has already been declared 
                     if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
+                        equationIsClear = true;
+
                         evaluate(); 
-                        equationIsClear = false;
+                        // equationIsClear = false;
                         operation = sqRoot;
                     } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                         firstNumber = parseFloat(displayValue.textContent); 
@@ -449,8 +469,10 @@ equalsButton.addEventListener('click', (event) => {
                 break;
             case "Escape":
                 document.getElementById("clear-btn").click();
+                break;
             case "^":
                 document.getElementById("exponent-btn").click();
+                break;200
         }
       return false; 
     });
