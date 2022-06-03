@@ -169,127 +169,130 @@ const mathButtons = document.querySelectorAll('.math-buttons');
         let target = event.target
         decimalCount = 0;
          
-        if(equationIsClear == true) { 
+        if(equationIsClear == true && !operation) { 
            populateEquation(target.textContent); 
         }
 
-        if(target.id === "add-btn") { 
-            if (!firstNumber) { // if firstNumber is empty
-                firstNumber = parseFloat(displayValue.textContent); 
-                console.log(`FirstNumber is ${firstNumber}`) 
-                operation = add; 
-                clearDisplay(); 
-            } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
-                    evaluate(); 
-                    equationIsClear = false; 
-                    operation = add
-                    console.log(operation); 
-                } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
+        if (displayValue.textContent === '') {
+            event.preventDefault();
+        } else {
+            if(target.id === "add-btn") { 
+                if (!firstNumber) { // if firstNumber is empty
                     firstNumber = parseFloat(displayValue.textContent); 
+                    console.log(`FirstNumber is ${firstNumber}`) 
                     operation = add; 
                     clearDisplay(); 
+                } else { // if firstNumber has already been declared 
+                    if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
+                        evaluate(); 
+                        equationIsClear = false; 
+                        operation = add
+                        console.log(operation); 
+                    } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
+                        firstNumber = parseFloat(displayValue.textContent); 
+                        operation = add; 
+                        clearDisplay(); 
+                    }
                 }
             }
-        }
 
-        if(target.id === "subtract-btn") { 
-            if (!firstNumber) { // if firstNumber is empty
-                firstNumber = parseFloat(displayValue.textContent); 
-                console.log(`FirstNumber is ${firstNumber}`) 
-                operation = subtract; 
-                clearDisplay(); 
-            } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
-                    evaluate(); 
-                    equationIsClear = false
-                    operation = subtract; 
-                    console.log(operation); 
-                } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
+            if(target.id === "subtract-btn") { 
+                if (!firstNumber) { // if firstNumber is empty
                     firstNumber = parseFloat(displayValue.textContent); 
+                    console.log(`FirstNumber is ${firstNumber}`) 
                     operation = subtract; 
                     clearDisplay(); 
+                } else { // if firstNumber has already been declared 
+                    if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
+                        evaluate(); 
+                        equationIsClear = false
+                        operation = subtract; 
+                        console.log(operation); 
+                    } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
+                        firstNumber = parseFloat(displayValue.textContent); 
+                        operation = subtract; 
+                        clearDisplay(); 
+                    }
                 }
             }
-        }
 
-        if(target.id === "multiply-btn") { 
-            if (!firstNumber) { // if firstNumber is empty
-                firstNumber = parseFloat(displayValue.textContent); 
-                console.log(`FirstNumber is ${firstNumber}`) 
-                operation = multiply; 
-                clearDisplay(); 
-            } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
-                    evaluate(); 
-                    equationIsClear = false
-                    operation = multiply; 
-                    console.log(operation); 
-                } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
+            if(target.id === "multiply-btn") { 
+                if (!firstNumber) { // if firstNumber is empty
                     firstNumber = parseFloat(displayValue.textContent); 
+                    console.log(`FirstNumber is ${firstNumber}`) 
                     operation = multiply; 
                     clearDisplay(); 
+                } else { // if firstNumber has already been declared 
+                    if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
+                        evaluate(); 
+                        equationIsClear = false
+                        operation = multiply; 
+                        console.log(operation); 
+                    } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
+                        firstNumber = parseFloat(displayValue.textContent); 
+                        operation = multiply; 
+                        clearDisplay(); 
+                    }
                 }
             }
-        }
 
-        if(target.id === "divide-btn") { 
-            if (!firstNumber) { // if firstNumber is empty
-                firstNumber = parseFloat(displayValue.textContent); 
-                console.log(`FirstNumber is ${firstNumber}`) 
-                operation = divide;
-                clearDisplay(); 
-            } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
-                    evaluate(); 
-                    equationIsClear = false
+            if(target.id === "divide-btn") { 
+                if (!firstNumber) { // if firstNumber is empty
+                    firstNumber = parseFloat(displayValue.textContent); 
+                    console.log(`FirstNumber is ${firstNumber}`) 
                     operation = divide;
-                } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
-                    firstNumber = parseFloat(displayValue.textContent); 
-                    operation = divide; 
                     clearDisplay(); 
+                } else { // if firstNumber has already been declared 
+                    if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
+                        evaluate(); 
+                        equationIsClear = false
+                        operation = divide;
+                    } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
+                        firstNumber = parseFloat(displayValue.textContent); 
+                        operation = divide; 
+                        clearDisplay(); 
+                    }
                 }
             }
-        }
 
-        if(target.id === "exponent-btn") { 
-            if (!firstNumber) { // if firstNumber is empty
-                firstNumber = parseFloat(displayValue.textContent); 
-                console.log(`FirstNumber is ${firstNumber}`) 
-                operation = exponentiation;
-                clearDisplay(); 
-            } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
-                    evaluate(); 
-                    equationIsClear = false
+            if(target.id === "exponent-btn") { 
+                if (!firstNumber) { // if firstNumber is empty
+                    firstNumber = parseFloat(displayValue.textContent); 
+                    console.log(`FirstNumber is ${firstNumber}`) 
                     operation = exponentiation;
-                } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
-                    firstNumber = parseFloat(displayValue.textContent); 
-                    operation = exponentiation; 
                     clearDisplay(); 
+                } else { // if firstNumber has already been declared 
+                    if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
+                        evaluate(); 
+                        equationIsClear = false
+                        operation = exponentiation;
+                    } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
+                        firstNumber = parseFloat(displayValue.textContent); 
+                        operation = exponentiation; 
+                        clearDisplay(); 
+                    }
                 }
             }
-        }
 
-        if(target.id === "sqRoot-btn") { 
-            if (!firstNumber) { // if firstNumber is empty
-                firstNumber = parseFloat(displayValue.textContent); 
-                console.log(`FirstNumber is ${firstNumber}`) 
-                operation = sqRoot;
-                evaluate()
-            } else { // if firstNumber has already been declared 
-                if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
-                    evaluate(); 
-                    equationIsClear = false
+            if(target.id === "sqRoot-btn") { 
+                if (!firstNumber) { // if firstNumber is empty
+                    firstNumber = parseFloat(displayValue.textContent); 
+                    console.log(`FirstNumber is ${firstNumber}`) 
                     operation = sqRoot;
-                } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
-                    firstNumber = parseFloat(displayValue.textContent); 
-                    operation = exponentiation; 
-                    clearDisplay(); 
+                    evaluate()
+                } else { // if firstNumber has already been declared 
+                    if (operation === multiply || operation === divide || operation === add || operation === subtract || operation === exponentiation || operation === sqRoot) {
+                        evaluate(); 
+                        equationIsClear = false
+                        operation = sqRoot;
+                    } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
+                        firstNumber = parseFloat(displayValue.textContent); 
+                        operation = exponentiation; 
+                        clearDisplay(); 
+                    }
                 }
             }
         }
-
     })
 })
 
@@ -386,8 +389,7 @@ equalsButton.addEventListener('click', () => {
         const eventKey = event.key
         switch(eventKey) {
             case '.' :
-                document.getElementById("decimal-btn").click(); 
-                break;
+                document.getElementById("decimal-btn").click();                 break;
             case '0':
                 document.getElementById('zero-btn').click(); 
                 break;
@@ -492,3 +494,6 @@ window.onload = function() {
     }
     
     
+    if (operation && firstNumber) { 
+
+    }
