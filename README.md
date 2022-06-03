@@ -1,5 +1,5 @@
 # calculator
-Calculator built in Javascript, CSS anc HTML.
+Calculator built in Javascript, CSS and HTML.
 By Saskia Binder 
 Started 5/20/2022. 
 

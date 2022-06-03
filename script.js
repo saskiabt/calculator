@@ -284,6 +284,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                         evaluate(); 
                         // equationIsClear = false;
                         operation = exponentiation;
+                        populateEquation(event.target.textContent); 
                     } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                         firstNumber = parseFloat(displayValue.textContent); 
                         operation = exponentiation; 
@@ -305,6 +306,7 @@ const mathButtons = document.querySelectorAll('.math-buttons');
                         evaluate(); 
                         // equationIsClear = false;
                         operation = sqRoot;
+                        populateEquation(event.target.textContent); 
                     } else { // if firstNumber has been added because user input first number and pressed equals without adding an operator
                         firstNumber = parseFloat(displayValue.textContent); 
                         operation = exponentiation; 
@@ -519,6 +521,3 @@ window.onload = function() {
     }
     
     
-    if (operation && firstNumber) { 
-
-    }
